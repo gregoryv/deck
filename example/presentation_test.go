@@ -15,6 +15,8 @@ func ExampleBook() {
 	p.Style(".nowrap",
 		"white-space: nowrap",
 	)
+	// dark mode
+	//p.Style("html, body", "background-color: #2E2E34", "color: #f0f8ff")
 
 	p.NewSlide(
 		H2("Here we go"),

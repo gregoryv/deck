@@ -100,7 +100,7 @@ func footer(b *content.Content, pageIndex int, parts []*Element) *Element {
 	)
 }
 
-var footerHeight int = 3  // vh
+var footerHeight int = 4  // vh
 var headerHeight int = 12 // vh
 
 func presentationView() *CSS {
@@ -126,7 +126,7 @@ func presentationView() *CSS {
 		"margin: auto",
 		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
 		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight-headerHeight-3),
-		"overflow: hide",
+		"overflow: hidden",
 		//"border: 1px dashed red",
 	)
 
@@ -153,7 +153,6 @@ func onePageView() *CSS {
 		"margin-bottom: 1vh",
 	)
 	css.Style(".page .content",
-		//"padding: 10px 16px 10px 16px",
 		"position: absolute",
 		"top: 0",
 		"left: 0",
@@ -167,6 +166,7 @@ func onePageView() *CSS {
 		"right: 0",
 		"text-align: center",
 		"height: "+fmt.Sprintf("%vvh", footerHeight),
+		//		"border: 1px solid red",
 	)
 	return css
 }
