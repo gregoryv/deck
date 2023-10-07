@@ -27,17 +27,17 @@ document.addEventListener('keydown', function(event) {
 	nextPage()
 	return
     }
-    var index = getPos()
     if (event.key === 'Home') {
-	index = 1
-	event.preventDefault()	
+	pageIndex = 1
+	event.preventDefault()
+	window.location.hash = pageIndex	
     }
     if (event.key === 'End') {
-	index = last
-	event.preventDefault()	
+	pageIndex = last
+	event.preventDefault()
+	window.location.hash = pageIndex	
     }
 
-    window.location.hash = index
     return
 })
 
