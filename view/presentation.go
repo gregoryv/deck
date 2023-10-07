@@ -98,6 +98,10 @@ var headerHeight int = 12 // vh
 
 func presentationView() *CSS {
 	css := NewCSS()
+	css.Style("html, body",
+		"background-color: #fff",
+	)
+
 	css.Style(".page .content",
 		"font-size: 3vh",
 		"margin: 0 0",

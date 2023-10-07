@@ -92,18 +92,6 @@ func ExampleBook() {
 
 func myTheme() *CSS {
 	css := NewCSS()
-	css.Style("html, body",
-		"background-color: #999999",
-	)
-	css.Style(".page .content",
-		"background-color: #fff",
-	)
-	css.Style(".page .footer",
-		"background-color: #fff",
-	)
-	css.Style("h1",
-		"text-align: center",
-	)
 	css.Style(".nowrap",
 		"white-space: nowrap",
 	)
