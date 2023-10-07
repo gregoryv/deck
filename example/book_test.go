@@ -17,7 +17,7 @@ func ExampleBook() {
 	b.SetStyle(myTheme())
 
 	b.NewPart(
-		H1("title 1"),
+		H2("Here we go"),
 
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna

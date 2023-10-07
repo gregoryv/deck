@@ -83,6 +83,7 @@ func presentationView() *web.CSS {
 	css := NewCSS()
 	css.Style(".page .content",
 		"font-size: 3vh",
+		"padding: 0px 1.6vw 0px 1.6vw",
 	)
 	css.Style(".page .content .center",
 		"display: flex",
@@ -91,6 +92,9 @@ func presentationView() *web.CSS {
 		"height: 80vh",
 	)
 	css.Style(".page .content .center table tr td",
+		"text-align: center",
+	)
+	css.Style(".page .content h2",
 		"text-align: center",
 	)
 	return css

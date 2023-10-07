@@ -1,6 +1,6 @@
 let elements = document.querySelectorAll('.page');
 let last = elements.length;
-let pageIndex = 1;
+let pageIndex = getPos();
 
 function previousPage() {
     if (pageIndex > 1) {

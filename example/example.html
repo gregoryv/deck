@@ -28,6 +28,7 @@ height: 25px;
 }
 .page .content {
 font-size: 3vh;
+padding: 0px 1.6vw 0px 1.6vw;
 }
 .page .content .center {
 display: flex;
@@ -36,6 +37,9 @@ align-items: center;
 height: 80vh;
 }
 .page .content .center table tr td {
+text-align: center;
+}
+.page .content h2 {
 text-align: center;
 }
 html, body {
@@ -62,7 +66,7 @@ text-align: center;
 </div>
 <div class="footer">1/5</div>
 </div>
-<div class="page" id="2"><div class="content"><h1>title 1</h1>
+<div class="page" id="2"><div class="content"><h2>Here we go</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -121,7 +125,7 @@ more here<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 </body>
 <script>let elements = document.querySelectorAll('.page');
 let last = elements.length;
-let pageIndex = 1;
+let pageIndex = getPos();
 
 function previousPage() {
     if (pageIndex > 1) {
