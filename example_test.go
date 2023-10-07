@@ -88,6 +88,6 @@ func ExamplePresentation() {
 		),
 	)
 
-	p.Document().SaveAs("example/presentation.html")
+	p.Document().SaveAs("out.html")
 	// output:
 }
