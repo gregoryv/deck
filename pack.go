@@ -48,6 +48,12 @@ func NewPack(scale int) *Pack {
 		"text-align: center",
 		"height: "+vh(headerHeight),
 	)
+	css.Style(".header .group",
+		"font-size: 2vh",
+	)
+	css.Style(".header h3",
+		"margin-top: 1vh",
+	)
 	css.Style(".page .view .slide",
 		"margin: auto",
 		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
@@ -87,6 +93,8 @@ type Pack struct {
 	toc   *Element
 	parts []*Element
 	css   *CSS
+
+	lastH2 *Element
 }
 
 func (p *Pack) Style(x string, v ...string) {
@@ -94,13 +102,28 @@ func (p *Pack) Style(x string, v ...string) {
 }
 
 func (p *Pack) NewSlide(elements ...any) {
-	if elements[0].(*Element).Name != "h2" {
-		panic("h2 not first")
-	}
-	header := Div(Class("header"), elements[0])
+	header := Div(Class("header"),
+		p.headings(elements[0].(*Element)),
+	)
 	slide := Div(Class("slide"))
 	slide.With(elements[1:]...)
 	p.parts = append(p.parts, Wrap(header, slide))
+}
+
+func (p *Pack) headings(e *Element) any {
+	switch e.Name {
+	case "h2":
+		p.lastH2 = e
+		return e
+
+	case "h3":
+		return Wrap(
+			Span(Class("group"), p.lastH2.Children[0]),
+			e,
+		)
+	default:
+		return e
+	}
 }
 
 func (p *Pack) Document() *Page {

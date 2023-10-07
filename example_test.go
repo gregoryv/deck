@@ -16,7 +16,7 @@ func ExamplePresentation() {
 	//p.Style("html, body", "background-color: #2E2E34", "color: #f0f8ff")
 
 	p.NewSlide(
-		H2("Here we go"),
+		H2("Animals"),
 
 		deck.Double(
 			P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -41,7 +41,7 @@ func ExamplePresentation() {
 		),
 	)
 	p.NewSlide(
-		H2("Middle No wrap"),
+		H3("Horses"),
 
 		deck.Middle(30,
 			Ul(Class("nowrap"),
@@ -58,9 +58,9 @@ func ExamplePresentation() {
 	)
 
 	p.NewSlide(
-		H2("Third"),
+		H3("Birds"),
 
-		H3("sub title title 3"),
+		H4("Wings"),
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -71,7 +71,19 @@ func ExamplePresentation() {
 		deserunt mollit anim id est laborum.`),
 	)
 	p.NewSlide(
-		H2("Fourth"),
+		H2("Things"),
+
+		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+		sed do eiusmod tempor incididunt ut labore et dolore magna
+		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+		aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia
+		deserunt mollit anim id est laborum.`),
+	)
+	p.NewSlide(
+		H3("Cars"),
 
 		deck.Center(
 			H4("title 4"),
