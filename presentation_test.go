@@ -6,7 +6,7 @@ import (
 )
 
 func ExamplePresentation() {
-	p := view.NewPresentation()
+	p := view.NewPresentation(3)
 	p.Title = "My funny presentation"
 	p.Author = "Gregory Vinčić"
 	p.Style(".nowrap",

@@ -8,11 +8,11 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func NewPresentation() *Presentation {
+func NewPresentation(scale int) *Presentation {
 	// vh
-	var footerHeight int = 3
-	var headerHeight int = 12
-	var fontSize = 3
+	var footerHeight int = scale
+	var headerHeight int = scale * 4
+	var fontSize = scale
 
 	css := NewCSS()
 	css.Style("html, body",
