@@ -8,15 +8,11 @@ import (
 
 func ExampleBook() {
 	c := content.NewContent()
-	title := "My funny presentation"
-	c.SetTitle(title)
-
-	author := "Gregory Vinčić"
-	c.SetAuthor(author)
-
+	c.SetTitle("My funny presentation")
+	c.SetAuthor("Gregory Vinčić")
 	c.SetStyle(myTheme())
-	p := view.NewPresentation(c)
 
+	p := view.NewPresentation(c)
 	p.NewSlide(
 		H2("Here we go"),
 

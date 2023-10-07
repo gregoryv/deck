@@ -69,6 +69,9 @@ func (p *Presentation) Document() *Page {
 	return NewPage(
 		Html(
 			Head(
+				Title(
+					c.Title(),
+				),
 				Style(
 					onePageView(),
 					presentationView(),
