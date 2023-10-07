@@ -1,15 +1,14 @@
-package content
+package view_test
 
 import (
-	"github.com/gregoryv/content/view"
+	"github.com/gregoryv/view"
 	. "github.com/gregoryv/web"
 )
 
-func ExampleBook() {
+func ExamplePresentation() {
 	p := view.NewPresentation()
 	p.Title = "My funny presentation"
 	p.Author = "Gregory Vinčić"
-
 	p.Style(".nowrap",
 		"white-space: nowrap",
 	)
@@ -89,6 +88,6 @@ func ExampleBook() {
 		),
 	)
 
-	p.Document().SaveAs("presentation.html")
+	p.Document().SaveAs("example/presentation.html")
 	// output:
 }

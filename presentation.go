@@ -4,7 +4,6 @@ import (
 	_ "embed"
 	"fmt"
 
-	"github.com/gregoryv/content"
 	"github.com/gregoryv/web"
 	. "github.com/gregoryv/web"
 )
@@ -27,8 +26,6 @@ type Presentation struct {
 	parts []*web.Element
 
 	// user configurable
-	style *web.CSS
-
 	css *CSS
 }
 
@@ -71,7 +68,7 @@ func (p *Presentation) Document() *Page {
 	}
 
 	parts := p.parts
-	// table of content
+	// table of view
 	toc := p.toc
 	if toc == nil {
 		ul := Ul()
@@ -102,12 +99,12 @@ func (p *Presentation) Document() *Page {
 	parts = append([]*Element{cover, toc}, parts...)
 	for i, page := range parts {
 		pageIndex := i + 1
-		content := Div(Class("content"))
-		content.With(page.Children...)
+		view := Div(Class("view"))
+		view.With(page.Children...)
 
 		body.With(
 			Div(Class("page"), Attr("id", pageIndex),
-				content,
+				view,
 				footer(pageIndex, parts),
 			),
 		)
@@ -144,18 +141,18 @@ func presentationView() *CSS {
 		"background-color: #fff",
 	)
 
-	css.Style(".page .content",
+	css.Style(".page .view",
 		"font-size: 3vh",
 		"margin: 0 0",
 		"padding: 0 0",
 		//"padding: 0px 1.6vw 0px 1.6vw",
 	)
-	css.Style(".page .content .header",
+	css.Style(".page .view .header",
 		"text-align: center",
 		"height: "+fmt.Sprintf("%vvh", headerHeight),
 	)
 
-	css.Style(".page .content .slide",
+	css.Style(".page .view .slide",
 		"margin: auto",
 		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
 		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight-headerHeight-3),
@@ -163,7 +160,7 @@ func presentationView() *CSS {
 		//"border: 1px dashed red",
 	)
 
-	css.Style(".page .content .cover",
+	css.Style(".page .view .cover",
 		"display: flex",
 		"justify-content: center",
 		"align-items: center",
@@ -193,7 +190,7 @@ func onePageView() *CSS {
 		"position: relative",
 		"margin-bottom: 1vh",
 	)
-	css.Style(".page .content",
+	css.Style(".page .view",
 		"position: absolute",
 		"top: 0",
 		"left: 0",
@@ -212,7 +209,7 @@ func onePageView() *CSS {
 	return css
 }
 
-type FooterFunc func(b *content.Content, pageIndex int, parts []*Element) *Element
+type FooterFunc func(pageIndex int, parts []*Element) *Element
 
 //go:embed enhance.js
 var enhance []byte

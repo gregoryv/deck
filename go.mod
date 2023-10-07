@@ -1,4 +1,4 @@
-module github.com/gregoryv/content
+module github.com/gregoryv/view
 
 go 1.21.1
 
