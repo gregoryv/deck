@@ -4,7 +4,6 @@ import (
 	_ "embed"
 	"fmt"
 
-	"github.com/gregoryv/web"
 	. "github.com/gregoryv/web"
 )
 
@@ -88,12 +87,10 @@ type Presentation struct {
 	Title  string
 	Author string
 
-	cover *web.Element
-	toc   *web.Element
-	parts []*web.Element
-
-	// user configurable
-	css *CSS
+	cover *Element
+	toc   *Element
+	parts []*Element
+	css   *CSS
 }
 
 func (p *Presentation) Style(x string, v ...string) {
