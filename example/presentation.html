@@ -70,6 +70,18 @@ width: 60vw;
 .nowrap {
 white-space: nowrap;
 }
+.double {
+}
+.column.left {
+position: absolute;
+left: 4vw;
+width: 40vw;
+}
+.column.right {
+position: absolute;
+left: 50vw;
+width: 40vw;
+}
 </style>
 </head>
 <body>
@@ -84,7 +96,7 @@ white-space: nowrap;
 </div>
 <div class="page" id="2"><div class="content"><div class="header"><h2>Here we go</h2>
 </div>
-<div class="slide"><div class="layout two-column"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+<div class="slide"><div class="double"><div class="column left"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
@@ -92,7 +104,8 @@ white-space: nowrap;
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.</p>
-<ul>
+</div>
+<div class="column right"><ul>
 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
 <li>sed do eiusmod tempor incididunt ut labore et dolore magna</li>
 <li>aliqua. Ut enim ad minim veniam, quis nostrud exercitation</li>
@@ -102,6 +115,7 @@ white-space: nowrap;
 <li>occaecat cupidatat non proident, sunt in culpa qui officia</li>
 <li>deserunt mollit anim id est laborum.</li>
 </ul>
+</div>
 </div>
 </div>
 </div>

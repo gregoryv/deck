@@ -16,7 +16,7 @@ func ExampleBook() {
 	p.NewSlide(
 		H2("Here we go"),
 
-		Div(Class("layout two-column"),
+		Double(
 			P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -88,9 +88,26 @@ func ExampleBook() {
 	// output:
 }
 
-func middle(elements ...any) *Element {
+func Double(e1, e2 any) *Element {
+	div := Div(Class("double"))
+	div.With(
+		Div(
+			Class("column left"),
+			e1,
+		),
+	)
+	div.With(
+		Div(
+			Class("column right"),
+			e2,
+		),
+	)
+	return div
+}
+
+func middle(element any) *Element {
 	div := Div(Class("middle"))
-	div.With(elements...)
+	div.With(element)
 	return div
 }
 
@@ -108,12 +125,25 @@ func myTheme() *CSS {
 	css.Style("h1",
 		"text-align: center",
 	)
+	// middle
 	css.Style(".middle",
 		"padding-left: 20vw",
 		"width: 60vw",
 	)
 	css.Style(".nowrap",
 		"white-space: nowrap",
+	)
+	// double
+	css.Style(".double")
+	css.Style(".column.left",
+		"position: absolute",
+		"left: 4vw",
+		"width: 40vw",
+	)
+	css.Style(".column.right",
+		"position: absolute",
+		"left: 50vw",
+		"width: 40vw",
 	)
 	return css
 }
