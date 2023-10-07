@@ -9,11 +9,23 @@ import (
 )
 
 func NewPresentation(c *content.Content) *Presentation {
-	return &Presentation{c: c}
+	return &Presentation{
+		c: c,
+		css: onePageView().With(
+			presentationView(),
+			layoutView(),
+		),
+	}
 }
 
 type Presentation struct {
 	c *content.Content
+
+	css *CSS
+}
+
+func (p *Presentation) Style(x string, v ...string) {
+	p.css.Style(x, v...)
 }
 
 func (p *Presentation) NewSlide(elements ...any) {
@@ -72,12 +84,7 @@ func (p *Presentation) Document() *Page {
 				Title(
 					c.Title(),
 				),
-				Style(
-					onePageView(),
-					presentationView(),
-					layoutView(),
-					c.Style(),
-				),
+				Style(p.css),
 			),
 			body,
 			Script(

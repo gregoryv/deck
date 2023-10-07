@@ -10,9 +10,12 @@ func ExampleBook() {
 	c := content.NewContent()
 	c.SetTitle("My funny presentation")
 	c.SetAuthor("Gregory Vinčić")
-	c.SetStyle(myTheme())
 
 	p := view.NewPresentation(c)
+	p.Style(".nowrap",
+		"white-space: nowrap",
+	)
+
 	p.NewSlide(
 		H2("Here we go"),
 
@@ -88,13 +91,4 @@ func ExampleBook() {
 
 	p.Document().SaveAs("presentation.html")
 	// output:
-}
-
-func myTheme() *CSS {
-	css := NewCSS()
-	css.Style(".nowrap",
-		"white-space: nowrap",
-	)
-
-	return css
 }
