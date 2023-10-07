@@ -1,16 +1,33 @@
-document.addEventListener('keydown', function(event) {
-    var elements = document.querySelectorAll('.page');
-    var last = elements.length;
+let elements = document.querySelectorAll('.page');
+let last = elements.length;
+let pageIndex = 1;
 
-    index = getPos()
-    if ( index > 1 && previousPageKey(event)) {
-	index--
-	event.preventDefault()	
+function previousPage() {
+    if (pageIndex > 1) {
+	pageIndex--
+	window.location.hash = pageIndex
     }
-    if (index < last && nextPageKey(event)) {
-	index++
-	event.preventDefault()	
+}
+
+function nextPage() {
+    if (pageIndex < last) {
+	pageIndex++
+	window.location.hash = pageIndex
     }
+}
+
+document.addEventListener('keydown', function(event) {
+    if (previousPageKey(event)) {
+	event.preventDefault()		
+	previousPage()
+	return
+    }
+    if (nextPageKey(event)) {
+	event.preventDefault()
+	nextPage()
+	return
+    }
+    var index = getPos()
     if (event.key === 'Home') {
 	index = 1
 	event.preventDefault()	

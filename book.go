@@ -17,11 +17,15 @@ type Book struct {
 func (d *Book) Document() *Page {
 	body := Body()
 	for i, content := range d.pages {
+		pageIndex := i + 1
 		body.With(
-			A(Class("pagenum"), Attr("name", i+1)),
-			Div(Class("page"),
-				// include index hash
+			Div(Class("page"), Attr("id", pageIndex),
 				content,
+
+				Br(),
+				Div(Class("footer"),
+					pageIndex, "/", len(d.pages),
+				),
 			),
 		)
 	}
@@ -58,11 +62,15 @@ func theme() *CSS {
 	)
 	css.Style(".page",
 		"height: 100vh",
+		"position: relative",
 		debugBorder(),
 	)
-	css.Style("a.pagenum",
-		"display: block",
-		"height: 0px",
+	css.Style(".page .footer",
+		"position: absolute",
+		"bottom: 0",
+		"left: 0",
+		"right: 0",
+		"text-align: center",
 	)
 	return css
 }
