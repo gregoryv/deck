@@ -75,6 +75,7 @@ func (p *Presentation) Document() *Page {
 				Style(
 					onePageView(),
 					presentationView(),
+					layoutView(),
 					c.Style(),
 				),
 			),
