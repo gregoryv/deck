@@ -92,13 +92,24 @@ func footer(b *content.Content, pageIndex int, parts []*Element) *Element {
 	)
 }
 
+var footerHeight int = 3  // vh
+var headerHeight int = 12 // vh
+
 func presentationView() *CSS {
 	css := NewCSS()
 	css.Style(".page .content",
 		"font-size: 3vh",
-		"padding: 0px 1.6vw 0px 1.6vw",
+		"margin: 0 0",
+		"padding: 0 0",
+		//"padding: 0px 1.6vw 0px 1.6vw",
 	)
-	css.Style(".page .content .header")
+	css.Style(".page .content .header",
+		"display: flex",
+		"justify-content: center",
+		"align-items: center",
+		"height: "+fmt.Sprintf("%vvh", headerHeight),
+		"background-color: #e2e2e2",
+	)
 
 	css.Style(".page .content .slide",
 		"padding-top: 3.2vw",
@@ -131,10 +142,7 @@ func presentationView() *CSS {
 	return css
 }
 
-var footerHeight int = 3 // vh
-
 func onePageView() *CSS {
-
 	css := NewCSS()
 	css.Style("html, body",
 		"margin: 0 0",
