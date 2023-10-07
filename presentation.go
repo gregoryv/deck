@@ -30,7 +30,7 @@ func NewPresentation(scale int) *Presentation {
 		"top: 0",
 		"left: 0",
 		"right: 0",
-		"bottom: "+fmt.Sprintf("%vvh", footerHeight),
+		"bottom: "+vh(footerHeight),
 	)
 	css.Style(".page .footer",
 		"position: absolute",
@@ -38,23 +38,23 @@ func NewPresentation(scale int) *Presentation {
 		"left: 0",
 		"right: 0",
 		"text-align: center",
-		"height: "+fmt.Sprintf("%vvh", footerHeight),
+		"height: "+vh(footerHeight),
 		//		"border: 1px solid red",
 	)
 	css.Style(".page .view",
-		"font-size: "+fmt.Sprintf("%vvh", fontSize),
+		"font-size: "+vh(fontSize),
 		"margin: 0 0",
 		"padding: 0 0",
 		//"padding: 0px 1.6vw 0px 1.6vw",
 	)
 	css.Style(".page .view .header",
 		"text-align: center",
-		"height: "+fmt.Sprintf("%vvh", headerHeight),
+		"height: "+vh(headerHeight),
 	)
 	css.Style(".page .view .slide",
 		"margin: auto",
 		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
-		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight-headerHeight-3),
+		"height: "+vh(100-2*footerHeight-headerHeight-3),
 		"overflow: hidden",
 		//"border: 1px dashed red",
 	)
@@ -62,7 +62,7 @@ func NewPresentation(scale int) *Presentation {
 		"display: flex",
 		"justify-content: center",
 		"align-items: center",
-		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
+		"height: "+vh(100-2*footerHeight),
 		"text-align: center",
 		//"border: 1px dashed red",
 	)
@@ -78,6 +78,10 @@ func NewPresentation(scale int) *Presentation {
 	return &Presentation{
 		css: css,
 	}
+}
+
+func vh(i int) string {
+	return fmt.Sprintf("%vvh", i)
 }
 
 type Presentation struct {
