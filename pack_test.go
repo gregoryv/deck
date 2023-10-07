@@ -6,7 +6,7 @@ import (
 )
 
 func ExamplePresentation() {
-	p := deck.NewPresentation(3)
+	p := deck.NewPack(3)
 	p.Title = "My funny presentation"
 	p.Author = "Gregory Vinčić"
 	p.Style(".nowrap",

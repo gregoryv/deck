@@ -7,7 +7,7 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func NewPresentation(scale int) *Presentation {
+func NewPack(scale int) *Pack {
 	// vh
 	var footerHeight int = scale
 	var headerHeight int = scale * 4
@@ -74,7 +74,7 @@ func NewPresentation(scale int) *Presentation {
 		"list-style-type: circle",
 	)
 	css = css.With(layoutView())
-	return &Presentation{
+	return &Pack{
 		css: css,
 	}
 }
@@ -83,7 +83,7 @@ func vh(i int) string {
 	return fmt.Sprintf("%vvh", i)
 }
 
-type Presentation struct {
+type Pack struct {
 	Title  string
 	Author string
 
@@ -93,11 +93,11 @@ type Presentation struct {
 	css   *CSS
 }
 
-func (p *Presentation) Style(x string, v ...string) {
+func (p *Pack) Style(x string, v ...string) {
 	p.css.Style(x, v...)
 }
 
-func (p *Presentation) NewSlide(elements ...any) {
+func (p *Pack) NewSlide(elements ...any) {
 	if elements[0].(*Element).Name != "h2" {
 		panic("h2 not first")
 	}
@@ -107,7 +107,7 @@ func (p *Presentation) NewSlide(elements ...any) {
 	p.parts = append(p.parts, Wrap(header, slide))
 }
 
-func (p *Presentation) Document() *Page {
+func (p *Pack) Document() *Page {
 	body := Body()
 
 	// create cover page if not set
