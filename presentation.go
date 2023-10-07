@@ -9,11 +9,74 @@ import (
 )
 
 func NewPresentation() *Presentation {
+	// vh
+	var footerHeight int = 3
+	var headerHeight int = 12
+	var fontSize = 3
+
+	css := NewCSS()
+	css.Style("html, body",
+		"margin: 0 0",
+		"padding: 0 0",
+		"background-color: #fff",
+	)
+	css.Style(".page",
+		"height: 100vh",
+		"position: relative",
+		"margin-bottom: 1vh",
+	)
+	css.Style(".page .view",
+		"position: absolute",
+		"top: 0",
+		"left: 0",
+		"right: 0",
+		"bottom: "+fmt.Sprintf("%vvh", footerHeight),
+	)
+	css.Style(".page .footer",
+		"position: absolute",
+		"bottom: 0",
+		"left: 0",
+		"right: 0",
+		"text-align: center",
+		"height: "+fmt.Sprintf("%vvh", footerHeight),
+		//		"border: 1px solid red",
+	)
+	css.Style(".page .view",
+		"font-size: "+fmt.Sprintf("%vvh", fontSize),
+		"margin: 0 0",
+		"padding: 0 0",
+		//"padding: 0px 1.6vw 0px 1.6vw",
+	)
+	css.Style(".page .view .header",
+		"text-align: center",
+		"height: "+fmt.Sprintf("%vvh", headerHeight),
+	)
+	css.Style(".page .view .slide",
+		"margin: auto",
+		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
+		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight-headerHeight-3),
+		"overflow: hidden",
+		//"border: 1px dashed red",
+	)
+	css.Style(".page .view .cover",
+		"display: flex",
+		"justify-content: center",
+		"align-items: center",
+		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
+		"text-align: center",
+		//"border: 1px dashed red",
+	)
+	// toc
+	css.Style(".toc a",
+		"text-decoration: none",
+	)
+	css.Style(".h3",
+		"margin-left: 5vw",
+		"list-style-type: circle",
+	)
+	css = css.With(layoutView())
 	return &Presentation{
-		css: onePageView().With(
-			presentationView(),
-			layoutView(),
-		),
+		css: css,
 	}
 }
 
@@ -130,83 +193,6 @@ func footer(pageIndex int, parts []*Element) *Element {
 	return Div(Class("footer"),
 		pageIndex, "/", len(parts),
 	)
-}
-
-var footerHeight int = 4  // vh
-var headerHeight int = 12 // vh
-
-func presentationView() *CSS {
-	css := NewCSS()
-	css.Style("html, body",
-		"background-color: #fff",
-	)
-
-	css.Style(".page .view",
-		"font-size: 3vh",
-		"margin: 0 0",
-		"padding: 0 0",
-		//"padding: 0px 1.6vw 0px 1.6vw",
-	)
-	css.Style(".page .view .header",
-		"text-align: center",
-		"height: "+fmt.Sprintf("%vvh", headerHeight),
-	)
-
-	css.Style(".page .view .slide",
-		"margin: auto",
-		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
-		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight-headerHeight-3),
-		"overflow: hidden",
-		//"border: 1px dashed red",
-	)
-
-	css.Style(".page .view .cover",
-		"display: flex",
-		"justify-content: center",
-		"align-items: center",
-		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
-		"text-align: center",
-		//"border: 1px dashed red",
-	)
-	// toc
-	css.Style(".toc a",
-		"text-decoration: none",
-	)
-	css.Style(".h3",
-		"margin-left: 5vw",
-		"list-style-type: circle",
-	)
-	return css
-}
-
-func onePageView() *CSS {
-	css := NewCSS()
-	css.Style("html, body",
-		"margin: 0 0",
-		"padding: 0 0",
-	)
-	css.Style(".page",
-		"height: 100vh",
-		"position: relative",
-		"margin-bottom: 1vh",
-	)
-	css.Style(".page .view",
-		"position: absolute",
-		"top: 0",
-		"left: 0",
-		"right: 0",
-		"bottom: "+fmt.Sprintf("%vvh", footerHeight),
-	)
-	css.Style(".page .footer",
-		"position: absolute",
-		"bottom: 0",
-		"left: 0",
-		"right: 0",
-		"text-align: center",
-		"height: "+fmt.Sprintf("%vvh", footerHeight),
-		//		"border: 1px solid red",
-	)
-	return css
 }
 
 type FooterFunc func(pageIndex int, parts []*Element) *Element
