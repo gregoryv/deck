@@ -11,17 +11,20 @@ func NewContent() *Content {
 }
 
 type Content struct {
-	title string
-	cover *web.Element
-	parts []*web.Element
+	title  string
+	author string
+	cover  *web.Element
+	parts  []*web.Element
 
 	// user configurable
 	style *web.CSS
 }
 
-func (c *Content) SetTitle(v string) {
-	c.title = v
-}
+func (c *Content) SetTitle(v string) { c.title = v }
+func (c *Content) Title() string     { return c.title }
+
+func (c *Content) SetAuthor(v string) { c.author = v }
+func (c *Content) Author() string     { return c.author }
 
 func (c *Content) SetCover(elements ...any) {
 	c.cover = web.Wrap(elements...)

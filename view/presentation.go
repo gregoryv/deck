@@ -8,13 +8,42 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func Present(b *content.Content) *Page {
+func NewPresentation(c *content.Content) *Presentation {
+	return &Presentation{c: c}
+}
+
+type Presentation struct {
+	c *content.Content
+}
+
+func (p *Presentation) Document() *Page {
+	b := p.c
+	c := p.c
 	body := Body()
 	parts := b.Parts()
-	if b.Cover() != nil {
-		parts = append([]*Element{b.Cover()}, parts...)
+
+	// create cover page if not set
+	cover := b.Cover()
+	if cover == nil {
+		cover = Wrap(
+			Div(Class("center"),
+				Table(
+					Tr(
+						Td(
+							H1(c.Title()),
+						),
+					),
+					Tr(
+						Td(
+							c.Author(),
+						),
+					),
+				),
+			),
+		)
 	}
 
+	parts = append([]*Element{cover}, parts...)
 	for i, page := range parts {
 		pageIndex := i + 1
 		content := Div(Class("content"))
@@ -27,7 +56,7 @@ func Present(b *content.Content) *Page {
 		)
 	}
 
-	p := NewPage(
+	return NewPage(
 		Html(
 			Head(
 				Style(
@@ -42,7 +71,6 @@ func Present(b *content.Content) *Page {
 			),
 		),
 	)
-	return p
 }
 
 func footer(b *content.Content, pageIndex int, parts []*Element) *Element {
@@ -55,6 +83,15 @@ func presentationView() *web.CSS {
 	css := NewCSS()
 	css.Style(".page .content",
 		"font-size: 3vh",
+	)
+	css.Style(".page .content .center",
+		"display: flex",
+		"justify-content: center",
+		"align-items: center",
+		"height: 80vh",
+	)
+	css.Style(".page .content .center table tr td",
+		"text-align: center",
 	)
 	return css
 }

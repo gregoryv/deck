@@ -9,13 +9,12 @@ import (
 func ExampleBook() {
 	b := content.NewContent()
 	title := "My funny presentation"
-
 	b.SetTitle(title)
-	b.SetStyle(myTheme())
 
-	b.SetCover(
-		H1(title),
-	)
+	author := "Gregory Vinčić"
+	b.SetAuthor(author)
+
+	b.SetStyle(myTheme())
 
 	b.NewPart(
 		H1("title 1"),
@@ -75,7 +74,8 @@ func ExampleBook() {
 		deserunt mollit anim id est laborum.`),
 	)
 
-	view.Present(b).SaveAs("example.html")
+	p := view.NewPresentation(b)
+	p.Document().SaveAs("example.html")
 	// output:
 }
 
