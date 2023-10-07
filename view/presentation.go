@@ -2,6 +2,7 @@ package view
 
 import (
 	_ "embed"
+	"fmt"
 
 	"github.com/gregoryv/content"
 	. "github.com/gregoryv/web"
@@ -96,7 +97,8 @@ func presentationView() *CSS {
 		"display: flex",
 		"justify-content: center",
 		"align-items: center",
-		"height: 80vh",
+		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
+		//"border: 1px dashed red",
 	)
 	css.Style(".page .content .center table tr td",
 		"text-align: center",
@@ -107,8 +109,10 @@ func presentationView() *CSS {
 	return css
 }
 
+var footerHeight int = 3 // vh
+
 func onePageView() *CSS {
-	footerHeight := "25px"
+
 	css := NewCSS()
 	css.Style("html, body",
 		"margin: 0 0",
@@ -125,7 +129,7 @@ func onePageView() *CSS {
 		"top: 0",
 		"left: 0",
 		"right: 0",
-		"bottom: "+footerHeight,
+		"bottom: "+fmt.Sprintf("%vvh", footerHeight),
 	)
 	css.Style(".page .footer",
 		"position: absolute",
@@ -133,7 +137,7 @@ func onePageView() *CSS {
 		"left: 0",
 		"right: 0",
 		"text-align: center",
-		"height: "+footerHeight,
+		"height: "+fmt.Sprintf("%vvh", footerHeight),
 	)
 	return css
 }
