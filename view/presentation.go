@@ -74,12 +74,12 @@ func (p *Presentation) Document() *Page {
 		)
 		for i, root := range parts {
 			WalkElements(root, func(e *Element) {
-				if e.Name != "h2" {
+				if !(e.Name == "h2" || e.Name == "h3") {
 					return
 				}
 				// +2 skip cover page and toc
-				a := A(Href(fmt.Sprintf("#%v", i+2)), e.Text())
-				ul.With(Li(a))
+				a := A(Href(fmt.Sprintf("#%v", i+3)), e.Text())
+				ul.With(Li(Class(e.Name), a))
 			})
 		}
 
@@ -163,6 +163,14 @@ func presentationView() *CSS {
 		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
 		"text-align: center",
 		//"border: 1px dashed red",
+	)
+	// toc
+	css.Style(".toc a",
+		"text-decoration: none",
+	)
+	css.Style(".h3",
+		"margin-left: 5vw",
+		"list-style-type: circle",
 	)
 	return css
 }

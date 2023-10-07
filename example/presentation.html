@@ -52,6 +52,13 @@ align-items: center;
 height: 92vh;
 text-align: center;
 }
+.toc a {
+text-decoration: none;
+}
+.h3 {
+margin-left: 5vw;
+list-style-type: circle;
+}
 .center {
 text-align: center;
 }
@@ -85,10 +92,11 @@ white-space: nowrap;
 <div class="page" id="2"><div class="content"><div class="header"><h2>My funny presentation</h2>
 </div>
 <div style="padding-left: 30vh; width: 40vh"><nav class="toc"><ul>
-<li><a href="#2">Here we go</a></li>
-<li><a href="#3">Middle No wrap</a></li>
-<li><a href="#4">Third</a></li>
-<li><a href="#5">Fourth</a></li>
+<li class="h2"><a href="#3">Here we go</a></li>
+<li class="h2"><a href="#4">Middle No wrap</a></li>
+<li class="h2"><a href="#5">Third</a></li>
+<li class="h3"><a href="#5">sub title title 3</a></li>
+<li class="h2"><a href="#6">Fourth</a></li>
 </ul>
 </nav>
 </div>
@@ -141,7 +149,7 @@ white-space: nowrap;
 </div>
 <div class="page" id="5"><div class="content"><div class="header"><h2>Third</h2>
 </div>
-<div class="slide"><h3>title 3</h3>
+<div class="slide"><h3>sub title title 3</h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
