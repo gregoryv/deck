@@ -1,4 +1,4 @@
-package view
+package deck
 
 import (
 	_ "embed"
@@ -132,7 +132,7 @@ func (p *Presentation) Document() *Page {
 	}
 
 	parts := p.parts
-	// table of view
+	// table of deck
 	toc := p.toc
 	if toc == nil {
 		ul := Ul()
@@ -163,12 +163,12 @@ func (p *Presentation) Document() *Page {
 	parts = append([]*Element{cover, toc}, parts...)
 	for i, page := range parts {
 		pageIndex := i + 1
-		view := Div(Class("view"))
-		view.With(page.Children...)
+		deck := Div(Class("view"))
+		deck.With(page.Children...)
 
 		body.With(
 			Div(Class("page"), Attr("id", pageIndex),
-				view,
+				deck,
 				footer(pageIndex, parts),
 			),
 		)

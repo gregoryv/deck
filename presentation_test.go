@@ -1,12 +1,12 @@
-package view_test
+package deck_test
 
 import (
-	"github.com/gregoryv/view"
+	"github.com/gregoryv/deck"
 	. "github.com/gregoryv/web"
 )
 
 func ExamplePresentation() {
-	p := view.NewPresentation(3)
+	p := deck.NewPresentation(3)
 	p.Title = "My funny presentation"
 	p.Author = "Gregory Vinčić"
 	p.Style(".nowrap",
@@ -18,7 +18,7 @@ func ExamplePresentation() {
 	p.NewSlide(
 		H2("Here we go"),
 
-		view.Double(
+		deck.Double(
 			P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -43,7 +43,7 @@ func ExamplePresentation() {
 	p.NewSlide(
 		H2("Middle No wrap"),
 
-		view.Middle(30,
+		deck.Middle(30,
 			Ul(Class("nowrap"),
 				Li("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"),
 				Li("sed do eiusmod tempor incididunt ut labore et dolore magna"),
@@ -73,7 +73,7 @@ func ExamplePresentation() {
 	p.NewSlide(
 		H2("Fourth"),
 
-		view.Center(
+		deck.Center(
 			H4("title 4"),
 			Img(Src("https://avatars.githubusercontent.com/u/779941?v=4")),
 

@@ -1,4 +1,4 @@
-package view
+package deck
 
 import (
 	"fmt"
