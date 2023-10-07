@@ -41,7 +41,7 @@ func ExampleBook() {
 	p.NewSlide(
 		H2("No wrap"),
 
-		middle(
+		Middle(
 			Ul(Class("nowrap"),
 				Li("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"),
 				Li("sed do eiusmod tempor incididunt ut labore et dolore magna"),
@@ -70,11 +70,12 @@ func ExampleBook() {
 	)
 	p.NewSlide(
 		H2("Fourth"),
-		Span(
+
+		Center(
 			H4("title 4"),
-			"more here",
-		),
-		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+			Img(Src("https://avatars.githubusercontent.com/u/779941?v=4")),
+
+			P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
@@ -82,6 +83,7 @@ func ExampleBook() {
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
+		),
 	)
 
 	p.Document().SaveAs("presentation.html")
@@ -105,9 +107,15 @@ func Double(e1, e2 any) *Element {
 	return div
 }
 
-func middle(element any) *Element {
+func Middle(element ...any) *Element {
 	div := Div(Class("middle"))
-	div.With(element)
+	div.With(element...)
+	return div
+}
+
+func Center(element ...any) *Element {
+	div := Div(Class("center"))
+	div.With(element...)
 	return div
 }
 
@@ -123,6 +131,10 @@ func myTheme() *CSS {
 		"background-color: #fff",
 	)
 	css.Style("h1",
+		"text-align: center",
+	)
+	// center
+	css.Style(".center",
 		"text-align: center",
 	)
 	// middle
