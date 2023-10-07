@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>html, body {
+margin: 0 0;
+padding: 0 0;
+}
+.page {
+height: 100vh;
+;
+}
+a.pagenum {
+display: block;
+height: 0px;
+}
+</style>
+</head>
+<body>
+<a class="pagenum" name="1"></a><div class="page"><h1>title 1</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+		sed do eiusmod tempor incididunt ut labore et dolore magna
+		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+		aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia
+		deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+		sed do eiusmod tempor incididunt ut labore et dolore magna
+		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+		aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia
+		deserunt mollit anim id est laborum.</p>
+</div>
+<a class="pagenum" name="2"></a><div class="page"><h2>Lorem Ipsum</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+		sed do eiusmod tempor incididunt ut labore et dolore magna
+		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+		aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia
+		deserunt mollit anim id est laborum.</p>
+</div>
+<a class="pagenum" name="3"></a><div class="page"><h3>title 3</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+		sed do eiusmod tempor incididunt ut labore et dolore magna
+		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+		aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia
+		deserunt mollit anim id est laborum.</p>
+</div>
+<a class="pagenum" name="4"></a><div class="page"><h4>title 4</h4>
+more here<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+		sed do eiusmod tempor incididunt ut labore et dolore magna
+		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+		aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia
+		deserunt mollit anim id est laborum.</p>
+</div>
+</body>
+<script>document.addEventListener('keydown', function(event) {
+    var elements = document.querySelectorAll('.page');
+    var last = elements.length;
+
+    index = getPos()
+    if ( index > 1 && previousPageKey(event)) {
+	index--
+	event.preventDefault()	
+    }
+    if (index < last && nextPageKey(event)) {
+	index++
+	event.preventDefault()	
+    }
+    if (event.key === 'Home') {
+	index = 1
+	event.preventDefault()	
+    }
+    if (event.key === 'End') {
+	index = last
+	event.preventDefault()	
+    }
+
+    window.location.hash = index
+    return
+})
+
+function previousPageKey(event) {
+    return event.key === 'ArrowLeft' ||
+	    event.key === 'ArrowUp' ||
+	    event.key === 'PageUp'
+}
+function nextPageKey(event) {
+    return event.key === 'ArrowRight' ||
+	    event.key === 'ArrowDown' ||
+	    event.key === 'PageDown'
+}
+function getPos() {
+    let currentView = window.location.hash
+    if (currentView === '') {
+	currentView = "#1"
+    }
+    currentView =parseInt(currentView.split('#').join(''))
+    return currentView
+}
+
+</script>
+</html>
