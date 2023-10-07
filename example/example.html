@@ -166,6 +166,13 @@ document.addEventListener('keydown', function(event) {
     return
 })
 
+window.addEventListener('resize', handleResize);
+
+function handleResize() {
+    window.location.hash = getPos()
+}
+
+
 function previousPageKey(event) {
     return event.key === 'ArrowLeft' ||
 	    event.key === 'ArrowUp' ||
@@ -176,6 +183,7 @@ function nextPageKey(event) {
 	    event.key === 'ArrowDown' ||
 	    event.key === 'PageDown'
 }
+
 function getPos() {
     let currentView = window.location.hash
     if (currentView === '') {
