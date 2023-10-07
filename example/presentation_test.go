@@ -29,14 +29,16 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 
-		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-		sed do eiusmod tempor incididunt ut labore et dolore magna
-		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-		aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint
-		occaecat cupidatat non proident, sunt in culpa qui officia
-		deserunt mollit anim id est laborum.`),
+		Ul(
+			Li("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"),
+			Li("sed do eiusmod tempor incididunt ut labore et dolore magna"),
+			Li("aliqua. Ut enim ad minim veniam, quis nostrud exercitation"),
+			Li("ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis"),
+			Li("aute irure dolor in reprehenderit in voluptate velit esse"),
+			Li("cillum dolore eu fugiat nulla pariatur. Excepteur sint"),
+			Li("occaecat cupidatat non proident, sunt in culpa qui officia"),
+			Li("deserunt mollit anim id est laborum."),
+		),
 	)
 	p.NewSlide(
 		H2("Lorem Ipsum"),

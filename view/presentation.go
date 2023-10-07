@@ -20,7 +20,10 @@ func (p *Presentation) NewSlide(elements ...any) {
 	if elements[0].(*Element).Name != "h2" {
 		panic("h2 not first")
 	}
-	p.c.NewPart(elements...)
+	header := elements[0]
+	slide := Div(Class("middle"))
+	slide.With(elements[1:]...)
+	p.c.NewPart(header, slide)
 }
 
 func (p *Presentation) Document() *Page {
@@ -102,6 +105,18 @@ func presentationView() *CSS {
 	)
 	css.Style(".page .content .center table tr td",
 		"text-align: center",
+	)
+	css.Style(".page .content .middle",
+		"display: flex",
+		"justify-content: center",
+		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
+		"margin: auto",
+		//"border: 1px dashed red",
+	)
+	css.Style(".middle p, .middle ul",
+		"margin: 0 2em",
+		"width: 45%",
+		//"border: 1px dashed red",
 	)
 	css.Style(".page .content h2",
 		"text-align: center",
