@@ -1,24 +1,23 @@
-package book
+package content
 
 import (
-	"testing"
-
+	"github.com/gregoryv/content"
+	"github.com/gregoryv/content/view"
 	. "github.com/gregoryv/web"
 )
 
 func ExampleBook() {
-	b := NewBook()
+	b := content.NewContent()
 	title := "My funny presentation"
 
 	b.SetTitle(title)
-	b.ViewAs("presentation")
 	b.SetStyle(myTheme())
 
-	b.CoverPage(
+	b.SetCover(
 		H1(title),
 	)
 
-	b.Page(
+	b.NewPart(
 		H1("title 1"),
 
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -39,7 +38,7 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 	)
-	b.Page(
+	b.NewPart(
 		H2("Lorem Ipsum"),
 
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -51,7 +50,7 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 	)
-	b.Page(
+	b.NewPart(
 		H3("title 3"),
 
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -63,7 +62,7 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 	)
-	b.Page(
+	b.NewPart(
 		H4("title 4"),
 		"more here",
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -76,7 +75,7 @@ func ExampleBook() {
 		deserunt mollit anim id est laborum.`),
 	)
 
-	b.Document().SaveAs("testdata/example.html")
+	view.Present(b).SaveAs("example.html")
 	// output:
 }
 
@@ -95,10 +94,4 @@ func myTheme() *CSS {
 		"text-align: center",
 	)
 	return css
-}
-
-func TestBook(t *testing.T) {
-	// works out of the box
-	b := NewBook()
-	_ = b.Document()
 }

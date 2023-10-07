@@ -1,4 +1,4 @@
-module github.com/gregoryv/book
+module github.com/gregoryv/content
 
 go 1.21.1
 
