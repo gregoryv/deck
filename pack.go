@@ -38,13 +38,11 @@ func NewPack(scale int) *Pack {
 		"right: 0",
 		"text-align: center",
 		"height: "+vh(footerHeight),
-		//		"border: 1px solid red",
 	)
 	css.Style(".page .view",
 		"font-size: "+vh(fontSize),
 		"margin: 0 0",
 		"padding: 0 0",
-		//"padding: 0px 1.6vw 0px 1.6vw",
 	)
 	css.Style(".page .view .header",
 		"text-align: center",
@@ -55,7 +53,6 @@ func NewPack(scale int) *Pack {
 		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
 		"height: "+vh(100-2*footerHeight-headerHeight-3),
 		"overflow: hidden",
-		//"border: 1px dashed red",
 	)
 	css.Style(".page .view .cover",
 		"display: flex",
@@ -63,7 +60,6 @@ func NewPack(scale int) *Pack {
 		"align-items: center",
 		"height: "+vh(100-2*footerHeight-headerHeight),
 		"text-align: center",
-		//"border: 1px dashed red",
 	)
 	// toc
 	css.Style(".toc a",
@@ -195,8 +191,6 @@ func footer(pageIndex int, parts []*Element) *Element {
 		pageIndex, "/", len(parts),
 	)
 }
-
-type FooterFunc func(pageIndex int, parts []*Element) *Element
 
 //go:embed enhance.js
 var enhance []byte
