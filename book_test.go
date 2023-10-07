@@ -1,11 +1,22 @@
 package book
 
 import (
+	"testing"
+
 	. "github.com/gregoryv/web"
 )
 
 func ExampleBook() {
 	b := NewBook()
+	title := "My funny presentation"
+
+	b.SetTitle(title)
+	b.ViewAs("presentation")
+	b.SetStyle(myTheme())
+
+	b.CoverPage(
+		H1(title),
+	)
 
 	b.Page(
 		H1("title 1"),
@@ -67,4 +78,27 @@ func ExampleBook() {
 
 	b.Document().SaveAs("testdata/example.html")
 	// output:
+}
+
+func myTheme() *CSS {
+	css := NewCSS()
+	css.Style("html, body",
+		"background-color: #999999",
+	)
+	css.Style(".page .content",
+		"background-color: #fff",
+	)
+	css.Style(".page .footer",
+		"background-color: #fff",
+	)
+	css.Style("h1",
+		"text-align: center",
+	)
+	return css
+}
+
+func TestBook(t *testing.T) {
+	// works out of the box
+	b := NewBook()
+	_ = b.Document()
 }
