@@ -1,17 +1,15 @@
 package content
 
 import (
-	"github.com/gregoryv/content"
 	"github.com/gregoryv/content/view"
 	. "github.com/gregoryv/web"
 )
 
 func ExampleBook() {
-	c := content.NewContent()
-	c.SetTitle("My funny presentation")
-	c.SetAuthor("Gregory Vinčić")
+	p := view.NewPresentation()
+	p.Title = "My funny presentation"
+	p.Author = "Gregory Vinčić"
 
-	p := view.NewPresentation(c)
 	p.Style(".nowrap",
 		"white-space: nowrap",
 	)

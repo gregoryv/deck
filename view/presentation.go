@@ -5,12 +5,12 @@ import (
 	"fmt"
 
 	"github.com/gregoryv/content"
+	"github.com/gregoryv/web"
 	. "github.com/gregoryv/web"
 )
 
-func NewPresentation(c *content.Content) *Presentation {
+func NewPresentation() *Presentation {
 	return &Presentation{
-		c: c,
 		css: onePageView().With(
 			presentationView(),
 			layoutView(),
@@ -19,7 +19,15 @@ func NewPresentation(c *content.Content) *Presentation {
 }
 
 type Presentation struct {
-	c *content.Content
+	Title  string
+	Author string
+
+	cover *web.Element
+	toc   *web.Element
+	parts []*web.Element
+
+	// user configurable
+	style *web.CSS
 
 	css *CSS
 }
@@ -35,27 +43,26 @@ func (p *Presentation) NewSlide(elements ...any) {
 	header := Div(Class("header"), elements[0])
 	slide := Div(Class("slide"))
 	slide.With(elements[1:]...)
-	p.c.NewPart(header, slide)
+	p.parts = append(p.parts, Wrap(header, slide))
 }
 
 func (p *Presentation) Document() *Page {
-	c := p.c
 	body := Body()
 
 	// create cover page if not set
-	cover := c.Cover()
+	cover := p.cover
 	if cover == nil {
 		cover = Wrap(
 			Div(Class("cover"),
 				Table(
 					Tr(
 						Td(
-							H1(c.Title()),
+							H1(p.Title),
 						),
 					),
 					Tr(
 						Td(
-							c.Author(),
+							p.Author,
 						),
 					),
 				),
@@ -63,9 +70,9 @@ func (p *Presentation) Document() *Page {
 		)
 	}
 
-	parts := c.Parts()
+	parts := p.parts
 	// table of content
-	toc := c.Toc()
+	toc := p.toc
 	if toc == nil {
 		ul := Ul()
 		nav := Nav(
@@ -86,7 +93,7 @@ func (p *Presentation) Document() *Page {
 		toc = Wrap(
 			Div(
 				Class("header"),
-				H2(c.Title()),
+				H2(p.Title),
 			),
 			Middle(30, nav),
 		)
@@ -101,7 +108,7 @@ func (p *Presentation) Document() *Page {
 		body.With(
 			Div(Class("page"), Attr("id", pageIndex),
 				content,
-				footer(c, pageIndex, parts),
+				footer(pageIndex, parts),
 			),
 		)
 	}
@@ -110,7 +117,7 @@ func (p *Presentation) Document() *Page {
 		Html(
 			Head(
 				Title(
-					c.Title(),
+					p.Title,
 				),
 				Style(p.css),
 			),
@@ -122,7 +129,7 @@ func (p *Presentation) Document() *Page {
 	)
 }
 
-func footer(b *content.Content, pageIndex int, parts []*Element) *Element {
+func footer(pageIndex int, parts []*Element) *Element {
 	return Div(Class("footer"),
 		pageIndex, "/", len(parts),
 	)
