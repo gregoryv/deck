@@ -39,7 +39,7 @@ func ExampleBook() {
 	p.NewSlide(
 		H2("Lorem Ipsum"),
 
-		Ul(
+		Ul(Class("nowrap"),
 			Li("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"),
 			Li("sed do eiusmod tempor incididunt ut labore et dolore magna"),
 			Li("aliqua. Ut enim ad minim veniam, quis nostrud exercitation"),

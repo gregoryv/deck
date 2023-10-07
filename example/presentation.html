@@ -40,7 +40,23 @@ height: 12vh;
 background-color: #e2e2e2;
 }
 .page .content .slide {
+display: flex;
+justify-content: center;
+margin: auto;
 padding-top: 3.2vw;
+height: 100%;
+}
+table.layout {
+height: 79vh;
+}
+td.column {
+vertical-align: top;
+}
+td.cols2 {
+width: 45%;
+}
+td.column:first-child {
+padding-left: 3.2vw;
 }
 .page .content .center {
 display: flex;
@@ -51,18 +67,14 @@ height: 94vh;
 .page .content .center table tr td {
 text-align: center;
 }
-.page .content .middle {
-display: flex;
-justify-content: center;
-height: 94vh;
-margin: auto;
-}
-.middle p, .middle ul {
+.slide p, .slide ul {
 margin: 0 2em;
-width: 45%;
 }
 .page .content h2 {
 text-align: center;
+}
+ul.nowrap {
+white-space: nowrap;
 }
 html, body {
 background-color: #999999;
@@ -90,7 +102,8 @@ text-align: center;
 </div>
 <div class="page" id="2"><div class="content"><div class="header"><h2>Here we go</h2>
 </div>
-<div class="slide middle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+<div class="slide"><table class="layout">
+<tr><td class="column cols2"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
@@ -98,7 +111,7 @@ text-align: center;
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.</p>
-<ul>
+</td><td class="column cols2"><ul>
 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
 <li>sed do eiusmod tempor incididunt ut labore et dolore magna</li>
 <li>aliqua. Ut enim ad minim veniam, quis nostrud exercitation</li>
@@ -108,13 +121,15 @@ text-align: center;
 <li>occaecat cupidatat non proident, sunt in culpa qui officia</li>
 <li>deserunt mollit anim id est laborum.</li>
 </ul>
+</td></tr>
+</table>
 </div>
 </div>
 <div class="footer">2/5</div>
 </div>
 <div class="page" id="3"><div class="content"><div class="header"><h2>Lorem Ipsum</h2>
 </div>
-<div class="slide middle"><ul>
+<div class="slide"><ul class="nowrap">
 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
 <li>sed do eiusmod tempor incididunt ut labore et dolore magna</li>
 <li>aliqua. Ut enim ad minim veniam, quis nostrud exercitation</li>
@@ -130,8 +145,9 @@ text-align: center;
 </div>
 <div class="page" id="4"><div class="content"><div class="header"><h2>Third</h2>
 </div>
-<div class="slide middle"><h3>title 3</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+<div class="slide"><table class="layout">
+<tr><td class="column cols2"><h3>title 3</h3>
+</td><td class="column cols2"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
@@ -139,14 +155,17 @@ text-align: center;
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.</p>
+</td></tr>
+</table>
 </div>
 </div>
 <div class="footer">4/5</div>
 </div>
 <div class="page" id="5"><div class="content"><div class="header"><h2>Fourth</h2>
 </div>
-<div class="slide middle"><span><h4>title 4</h4>
-more here</span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+<div class="slide"><table class="layout">
+<tr><td class="column cols2"><span><h4>title 4</h4>
+more here</span></td><td class="column cols2"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
@@ -154,6 +173,8 @@ more here</span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.</p>
+</td></tr>
+</table>
 </div>
 </div>
 <div class="footer">5/5</div>
