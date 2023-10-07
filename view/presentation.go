@@ -15,6 +15,13 @@ type Presentation struct {
 	c *content.Content
 }
 
+func (p *Presentation) NewSlide(elements ...any) {
+	if elements[0].(*Element).Name != "h2" {
+		panic("h2 not first")
+	}
+	p.c.NewPart(elements...)
+}
+
 func (p *Presentation) Document() *Page {
 	c := p.c
 	body := Body()

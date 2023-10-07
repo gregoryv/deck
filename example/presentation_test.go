@@ -15,8 +15,9 @@ func ExampleBook() {
 	c.SetAuthor(author)
 
 	c.SetStyle(myTheme())
+	p := view.NewPresentation(c)
 
-	c.NewPart(
+	p.NewSlide(
 		H2("Here we go"),
 
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -37,7 +38,7 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 	)
-	c.NewPart(
+	p.NewSlide(
 		H2("Lorem Ipsum"),
 
 		Ul(
@@ -52,7 +53,7 @@ func ExampleBook() {
 		),
 	)
 
-	c.NewPart(
+	p.NewSlide(
 		H2("Third"),
 		H3("title 3"),
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -64,7 +65,7 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 	)
-	c.NewPart(
+	p.NewSlide(
 		H2("Fourth"),
 		H4("title 4"),
 		"more here",
@@ -78,7 +79,6 @@ func ExampleBook() {
 		deserunt mollit anim id est laborum.`),
 	)
 
-	p := view.NewPresentation(c)
 	p.Document().SaveAs("presentation.html")
 	// output:
 }
