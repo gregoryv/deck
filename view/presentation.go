@@ -22,24 +22,7 @@ func (p *Presentation) NewSlide(elements ...any) {
 	}
 	header := Div(Class("header"), elements[0])
 	slide := Div(Class("slide"))
-	columns := elements[1:]
-	if len(columns) > 1 {
-		tr := Tr()
-		for _, c := range columns {
-			tr.With(
-				Td(
-					Class(
-						fmt.Sprintf("column cols%v", len(columns)),
-					),
-					c,
-				),
-			)
-		}
-		slide.With(Table(Class("layout"), tr))
-	} else {
-		slide.With(columns...)
-	}
-
+	slide.With(elements[1:]...)
 	p.c.NewPart(header, slide)
 }
 
@@ -125,29 +108,14 @@ func presentationView() *CSS {
 		"justify-content: center",
 		"align-items: center",
 		"height: "+fmt.Sprintf("%vvh", headerHeight),
-		"background-color: #e2e2e2",
 	)
 
 	css.Style(".page .content .slide",
-		"display: flex",
-		"justify-content: center",
 		"margin: auto",
-		"padding-top: 3.2vw",
-		"height: 100%",
-		//"border: 1px dashed red",
-	)
-	css.Style("table.layout",
+		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
 		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight-headerHeight-3),
-	)
-	css.Style("td.column",
-		"vertical-align: top",
-		//"border: 1px dashed blue",
-	)
-	css.Style("td.cols2",
-		"width: 45%",
-	)
-	css.Style("td.column:first-child",
-		"padding-left: 3.2vw",
+		"overflow: hide",
+		//"border: 1px dashed red",
 	)
 
 	css.Style(".page .content .cover",
@@ -155,21 +123,8 @@ func presentationView() *CSS {
 		"justify-content: center",
 		"align-items: center",
 		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
-		//"border: 1px dashed red",
-	)
-	css.Style(".page .content .cover table tr td",
 		"text-align: center",
-	)
-	css.Style(".slide p, .slide ul",
-		"margin: 0 2em",
-		//"width: 45%",
 		//"border: 1px dashed red",
-	)
-	css.Style(".page .content h2",
-		"text-align: center",
-	)
-	css.Style("ul.nowrap",
-		"white-space: nowrap",
 	)
 	return css
 }
