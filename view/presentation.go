@@ -41,7 +41,6 @@ func (p *Presentation) NewSlide(elements ...any) {
 func (p *Presentation) Document() *Page {
 	c := p.c
 	body := Body()
-	parts := c.Parts()
 
 	// create cover page if not set
 	cover := c.Cover()
@@ -64,7 +63,36 @@ func (p *Presentation) Document() *Page {
 		)
 	}
 
-	parts = append([]*Element{cover}, parts...)
+	parts := c.Parts()
+	// table of content
+	toc := c.Toc()
+	if toc == nil {
+		ul := Ul()
+		nav := Nav(
+			Class("toc"),
+			ul,
+		)
+		for i, root := range parts {
+			WalkElements(root, func(e *Element) {
+				if e.Name != "h2" {
+					return
+				}
+				// +2 skip cover page and toc
+				a := A(Href(fmt.Sprintf("#%v", i+2)), e.Text())
+				ul.With(Li(a))
+			})
+		}
+
+		toc = Wrap(
+			Div(
+				Class("header"),
+				H2(c.Title()),
+			),
+			Middle(30, nav),
+		)
+	}
+
+	parts = append([]*Element{cover, toc}, parts...)
 	for i, page := range parts {
 		pageIndex := i + 1
 		content := Div(Class("content"))
@@ -116,9 +144,7 @@ func presentationView() *CSS {
 		//"padding: 0px 1.6vw 0px 1.6vw",
 	)
 	css.Style(".page .content .header",
-		"display: flex",
-		"justify-content: center",
-		"align-items: center",
+		"text-align: center",
 		"height: "+fmt.Sprintf("%vvh", headerHeight),
 	)
 

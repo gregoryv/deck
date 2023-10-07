@@ -36,9 +36,7 @@ margin: 0 0;
 padding: 0 0;
 }
 .page .content .header {
-display: flex;
-justify-content: center;
-align-items: center;
+text-align: center;
 height: 12vh;
 }
 .page .content .slide {
@@ -82,9 +80,22 @@ white-space: nowrap;
 </table>
 </div>
 </div>
-<div class="footer">1/5</div>
+<div class="footer">1/6</div>
 </div>
-<div class="page" id="2"><div class="content"><div class="header"><h2>Here we go</h2>
+<div class="page" id="2"><div class="content"><div class="header"><h2>My funny presentation</h2>
+</div>
+<div style="padding-left: 30vh; width: 40vh"><nav class="toc"><ul>
+<li><a href="#2">Here we go</a></li>
+<li><a href="#3">Middle No wrap</a></li>
+<li><a href="#4">Third</a></li>
+<li><a href="#5">Fourth</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="footer">2/6</div>
+</div>
+<div class="page" id="3"><div class="content"><div class="header"><h2>Here we go</h2>
 </div>
 <div class="slide"><div class="double"><div class="column left"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -109,9 +120,9 @@ white-space: nowrap;
 </div>
 </div>
 </div>
-<div class="footer">2/5</div>
+<div class="footer">3/6</div>
 </div>
-<div class="page" id="3"><div class="content"><div class="header"><h2>Middle No wrap</h2>
+<div class="page" id="4"><div class="content"><div class="header"><h2>Middle No wrap</h2>
 </div>
 <div class="slide"><div style="padding-left: 30vh; width: 40vh"><ul class="nowrap">
 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
@@ -126,9 +137,9 @@ white-space: nowrap;
 </div>
 </div>
 </div>
-<div class="footer">3/5</div>
+<div class="footer">4/6</div>
 </div>
-<div class="page" id="4"><div class="content"><div class="header"><h2>Third</h2>
+<div class="page" id="5"><div class="content"><div class="header"><h2>Third</h2>
 </div>
 <div class="slide"><h3>title 3</h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -141,9 +152,9 @@ white-space: nowrap;
 		deserunt mollit anim id est laborum.</p>
 </div>
 </div>
-<div class="footer">4/5</div>
+<div class="footer">5/6</div>
 </div>
-<div class="page" id="5"><div class="content"><div class="header"><h2>Fourth</h2>
+<div class="page" id="6"><div class="content"><div class="header"><h2>Fourth</h2>
 </div>
 <div class="slide"><div class="center"><h4>title 4</h4>
 <img src="https://avatars.githubusercontent.com/u/779941?v=4"/><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -157,7 +168,7 @@ white-space: nowrap;
 </div>
 </div>
 </div>
-<div class="footer">5/5</div>
+<div class="footer">6/6</div>
 </div>
 </body>
 <script>let elements = document.querySelectorAll('.page');
@@ -199,7 +210,11 @@ document.addEventListener('keydown', function(event) {
 	event.preventDefault()
 	window.location.hash = pageIndex	
     }
-
+    if (event.key === 't') {
+	pageIndex = 2 // toc
+	event.preventDefault()
+	window.location.hash = pageIndex	
+    }
     return
 })
 

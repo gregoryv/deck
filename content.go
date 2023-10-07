@@ -14,6 +14,7 @@ type Content struct {
 	title  string
 	author string
 	cover  *web.Element
+	toc    *web.Element
 	parts  []*web.Element
 
 	// user configurable
@@ -29,9 +30,16 @@ func (c *Content) Author() string     { return c.author }
 func (c *Content) SetCover(elements ...any) {
 	c.cover = web.Wrap(elements...)
 }
-
 func (c *Content) Cover() *web.Element {
 	return c.cover
+}
+
+func (c *Content) SetToc(elements ...any) {
+	c.toc = web.Wrap(elements...)
+}
+
+func (c *Content) Toc() *web.Element {
+	return c.toc
 }
 
 func (c *Content) NewPart(elements ...any) {

@@ -37,7 +37,11 @@ document.addEventListener('keydown', function(event) {
 	event.preventDefault()
 	window.location.hash = pageIndex	
     }
-
+    if (event.key === 't') {
+	pageIndex = 2 // toc
+	event.preventDefault()
+	window.location.hash = pageIndex	
+    }
     return
 })
 
