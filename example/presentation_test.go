@@ -69,8 +69,10 @@ func ExampleBook() {
 	)
 	p.NewSlide(
 		H2("Fourth"),
-		H4("title 4"),
-		"more here",
+		Span(
+			H4("title 4"),
+			"more here",
+		),
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation

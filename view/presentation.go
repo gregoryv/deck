@@ -20,8 +20,8 @@ func (p *Presentation) NewSlide(elements ...any) {
 	if elements[0].(*Element).Name != "h2" {
 		panic("h2 not first")
 	}
-	header := elements[0]
-	slide := Div(Class("middle"))
+	header := Div(Class("header"), elements[0])
+	slide := Div(Class("slide middle"))
 	slide.With(elements[1:]...)
 	p.c.NewPart(header, slide)
 }
@@ -57,7 +57,6 @@ func (p *Presentation) Document() *Page {
 		pageIndex := i + 1
 		content := Div(Class("content"))
 		content.With(page.Children...)
-		// todo header
 
 		body.With(
 			Div(Class("page"), Attr("id", pageIndex),
@@ -95,6 +94,11 @@ func presentationView() *CSS {
 	css.Style(".page .content",
 		"font-size: 3vh",
 		"padding: 0px 1.6vw 0px 1.6vw",
+	)
+	css.Style(".page .content .header")
+
+	css.Style(".page .content .slide",
+		"padding-top: 3.2vw",
 	)
 	css.Style(".page .content .center",
 		"display: flex",
