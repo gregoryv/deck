@@ -52,7 +52,7 @@ func (p *Presentation) Document() *Page {
 	cover := c.Cover()
 	if cover == nil {
 		cover = Wrap(
-			Div(Class("center"),
+			Div(Class("cover"),
 				Table(
 					Tr(
 						Td(
@@ -150,14 +150,14 @@ func presentationView() *CSS {
 		"padding-left: 3.2vw",
 	)
 
-	css.Style(".page .content .center",
+	css.Style(".page .content .cover",
 		"display: flex",
 		"justify-content: center",
 		"align-items: center",
 		"height: "+fmt.Sprintf("%vvh", 100-2*footerHeight),
 		//"border: 1px dashed red",
 	)
-	css.Style(".page .content .center table tr td",
+	css.Style(".page .content .cover table tr td",
 		"text-align: center",
 	)
 	css.Style(".slide p, .slide ul",
