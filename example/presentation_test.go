@@ -1,6 +1,8 @@
 package content
 
 import (
+	"fmt"
+
 	"github.com/gregoryv/content"
 	"github.com/gregoryv/content/view"
 	. "github.com/gregoryv/web"
@@ -39,9 +41,9 @@ func ExampleBook() {
 		),
 	)
 	p.NewSlide(
-		H2("No wrap"),
+		H2("Middle No wrap"),
 
-		Middle(
+		Middle(30,
 			Ul(Class("nowrap"),
 				Li("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"),
 				Li("sed do eiusmod tempor incididunt ut labore et dolore magna"),
@@ -107,8 +109,13 @@ func Double(e1, e2 any) *Element {
 	return div
 }
 
-func Middle(element ...any) *Element {
-	div := Div(Class("middle"))
+func Middle(leftVH int, element ...any) *Element {
+	div := Div(
+		Attr(
+			"style",
+			fmt.Sprintf("padding-left: %vvh; width: %vvh", leftVH, 100-2*leftVH),
+		),
+	)
 	div.With(element...)
 	return div
 }
@@ -133,17 +140,13 @@ func myTheme() *CSS {
 	css.Style("h1",
 		"text-align: center",
 	)
+	css.Style(".nowrap",
+		"white-space: nowrap",
+	)
+
 	// center
 	css.Style(".center",
 		"text-align: center",
-	)
-	// middle
-	css.Style(".middle",
-		"padding-left: 20vw",
-		"width: 60vw",
-	)
-	css.Style(".nowrap",
-		"white-space: nowrap",
 	)
 	// double
 	css.Style(".double")
