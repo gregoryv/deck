@@ -62,7 +62,7 @@ func NewPresentation(scale int) *Presentation {
 		"display: flex",
 		"justify-content: center",
 		"align-items: center",
-		"height: "+vh(100-2*footerHeight),
+		"height: "+vh(100-2*footerHeight-headerHeight),
 		"text-align: center",
 		//"border: 1px dashed red",
 	)
