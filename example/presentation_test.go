@@ -7,16 +7,16 @@ import (
 )
 
 func ExampleBook() {
-	b := content.NewContent()
+	c := content.NewContent()
 	title := "My funny presentation"
-	b.SetTitle(title)
+	c.SetTitle(title)
 
 	author := "Gregory Vinčić"
-	b.SetAuthor(author)
+	c.SetAuthor(author)
 
-	b.SetStyle(myTheme())
+	c.SetStyle(myTheme())
 
-	b.NewPart(
+	c.NewPart(
 		H2("Here we go"),
 
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -37,21 +37,24 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 	)
-	b.NewPart(
+	c.NewPart(
 		H2("Lorem Ipsum"),
 
-		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-		sed do eiusmod tempor incididunt ut labore et dolore magna
-		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-		ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-		aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint
-		occaecat cupidatat non proident, sunt in culpa qui officia
-		deserunt mollit anim id est laborum.`),
+		Ul(
+			Li("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"),
+			Li("sed do eiusmod tempor incididunt ut labore et dolore magna"),
+			Li("aliqua. Ut enim ad minim veniam, quis nostrud exercitation"),
+			Li("ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis"),
+			Li("aute irure dolor in reprehenderit in voluptate velit esse"),
+			Li("cillum dolore eu fugiat nulla pariatur. Excepteur sint"),
+			Li("occaecat cupidatat non proident, sunt in culpa qui officia"),
+			Li("deserunt mollit anim id est laborum."),
+		),
 	)
-	b.NewPart(
-		H3("title 3"),
 
+	c.NewPart(
+		H2("Third"),
+		H3("title 3"),
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 		sed do eiusmod tempor incididunt ut labore et dolore magna
 		aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -61,7 +64,8 @@ func ExampleBook() {
 		occaecat cupidatat non proident, sunt in culpa qui officia
 		deserunt mollit anim id est laborum.`),
 	)
-	b.NewPart(
+	c.NewPart(
+		H2("Fourth"),
 		H4("title 4"),
 		"more here",
 		P(`Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -74,8 +78,8 @@ func ExampleBook() {
 		deserunt mollit anim id est laborum.`),
 	)
 
-	p := view.NewPresentation(b)
-	p.Document().SaveAs("example.html")
+	p := view.NewPresentation(c)
+	p.Document().SaveAs("presentation.html")
 	// output:
 }
 

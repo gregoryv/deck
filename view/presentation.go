@@ -4,7 +4,6 @@ import (
 	_ "embed"
 
 	"github.com/gregoryv/content"
-	"github.com/gregoryv/web"
 	. "github.com/gregoryv/web"
 )
 
@@ -17,13 +16,12 @@ type Presentation struct {
 }
 
 func (p *Presentation) Document() *Page {
-	b := p.c
 	c := p.c
 	body := Body()
-	parts := b.Parts()
+	parts := c.Parts()
 
 	// create cover page if not set
-	cover := b.Cover()
+	cover := c.Cover()
 	if cover == nil {
 		cover = Wrap(
 			Div(Class("center"),
@@ -48,10 +46,12 @@ func (p *Presentation) Document() *Page {
 		pageIndex := i + 1
 		content := Div(Class("content"))
 		content.With(page.Children...)
+		// todo header
+
 		body.With(
 			Div(Class("page"), Attr("id", pageIndex),
 				content,
-				footer(b, pageIndex, parts),
+				footer(c, pageIndex, parts),
 			),
 		)
 	}
@@ -62,7 +62,7 @@ func (p *Presentation) Document() *Page {
 				Style(
 					onePageView(),
 					presentationView(),
-					b.Style(),
+					c.Style(),
 				),
 			),
 			body,
@@ -79,7 +79,7 @@ func footer(b *content.Content, pageIndex int, parts []*Element) *Element {
 	)
 }
 
-func presentationView() *web.CSS {
+func presentationView() *CSS {
 	css := NewCSS()
 	css.Style(".page .content",
 		"font-size: 3vh",
@@ -100,7 +100,7 @@ func presentationView() *web.CSS {
 	return css
 }
 
-func onePageView() *web.CSS {
+func onePageView() *CSS {
 	footerHeight := "25px"
 	css := NewCSS()
 	css.Style("html, body",
