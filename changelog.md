@@ -3,6 +3,10 @@
 This project adheres to semantic versioning and all major changes will
 be noted in this file.
 
+## [0.1.2] 2023-10-08
+
+- Publish package
+
 ## [0.1.1] 2023-10-08
 
 - Add MIT license
