@@ -106,7 +106,7 @@ func (p *Pack) Style(x string, v ...string) {
 	p.css.Style(x, v...)
 }
 
-func (p *Pack) NewSlide(elements ...any) {
+func (p *Pack) NewCard(elements ...any) {
 	header := Div(Class("header"),
 		p.headings(elements[0].(*Element)),
 	)

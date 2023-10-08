@@ -12,29 +12,29 @@ func Example_pack() {
 	// dark mode
 	//p.Style("html, body", "background-color: #2E2E34", "color: #f0f8ff")
 
-	p.NewSlide(
+	p.NewCard(
 		H2("Animals"),
 		deck.Double(
 			lorem,
 			ipsum,
 		),
 	)
-	p.NewSlide(
+	p.NewCard(
 		H3("Horses"),
 		deck.Middle(50,
 			ipsum,
 		),
 	)
-	p.NewSlide(
+	p.NewCard(
 		H3("Birds"),
 		H4("Wings"),
 		lorem,
 	)
-	p.NewSlide(
+	p.NewCard(
 		H2("Things"),
 		lorem,
 	)
-	p.NewSlide(
+	p.NewCard(
 		H3("Cars"),
 		deck.Center(
 			H4("title 4"),
