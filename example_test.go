@@ -6,13 +6,15 @@ import (
 )
 
 func Example_deck() {
-	p := deck.NewDeck()
-	p.Title = "My funny presentation"
-	p.Author = "Gregory Vinčić"
+	p := deck.Deck{
+		Title:  "My funny presentation",
+		Author: "Gregory Vinčić",
+	}
 	// dark mode
 	//p.Style("html, body", "background-color: #2E2E34", "color: #f0f8ff")
 
 	p.NewCard(
+		// each card must start with H2 or H3
 		H2("Animals"),
 		deck.Double(
 			lorem,
@@ -20,6 +22,7 @@ func Example_deck() {
 		),
 	)
 	p.NewCard(
+		// H3 means sub card of last H"
 		H3("Horses"),
 		deck.Middle(50,
 			ipsum,

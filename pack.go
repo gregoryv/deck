@@ -7,7 +7,19 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func NewDeck() *Deck {
+type Deck struct {
+	Title  string
+	Author string
+
+	cover *Element
+	toc   *Element
+	parts []*Element
+	user  *CSS
+
+	lastH2 *Element
+}
+
+func (p *Deck) CSS() *CSS {
 	// vh
 	var scale = 2
 	var footerHeight int = scale
@@ -77,33 +89,14 @@ func NewDeck() *Deck {
 		"list-style-type: circle",
 	)
 	css = css.With(layoutView())
-	return &Deck{
-		css: css,
+	if p.user != nil {
+		css = css.With(p.user)
 	}
-}
-
-func vh(i int) string {
-	return fmt.Sprintf("%vvh", i)
-}
-
-func vw(i int) string {
-	return fmt.Sprintf("%vvw", i)
-}
-
-type Deck struct {
-	Title  string
-	Author string
-
-	cover *Element
-	toc   *Element
-	parts []*Element
-	css   *CSS
-
-	lastH2 *Element
+	return css
 }
 
 func (p *Deck) Style(x string, v ...string) {
-	p.css.Style(x, v...)
+	p.user.Style(x, v...)
 }
 
 func (p *Deck) NewCard(elements ...any) {
@@ -204,7 +197,7 @@ func (p *Deck) Document() *Page {
 				Title(
 					p.Title,
 				),
-				Style(p.css),
+				Style(p.CSS()),
 			),
 			body,
 			Script(
@@ -222,3 +215,11 @@ func footer(pageIndex int, parts []*Element) *Element {
 
 //go:embed enhance.js
 var enhance []byte
+
+func vh(i int) string {
+	return fmt.Sprintf("%vvh", i)
+}
+
+func vw(i int) string {
+	return fmt.Sprintf("%vvw", i)
+}
