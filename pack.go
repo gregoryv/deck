@@ -7,7 +7,7 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func NewPack() *Pack {
+func NewDeck() *Deck {
 	// vh
 	var scale = 2
 	var footerHeight int = scale
@@ -77,7 +77,7 @@ func NewPack() *Pack {
 		"list-style-type: circle",
 	)
 	css = css.With(layoutView())
-	return &Pack{
+	return &Deck{
 		css: css,
 	}
 }
@@ -90,7 +90,7 @@ func vw(i int) string {
 	return fmt.Sprintf("%vvw", i)
 }
 
-type Pack struct {
+type Deck struct {
 	Title  string
 	Author string
 
@@ -102,11 +102,11 @@ type Pack struct {
 	lastH2 *Element
 }
 
-func (p *Pack) Style(x string, v ...string) {
+func (p *Deck) Style(x string, v ...string) {
 	p.css.Style(x, v...)
 }
 
-func (p *Pack) NewCard(elements ...any) {
+func (p *Deck) NewCard(elements ...any) {
 	header := Div(Class("header"),
 		p.headings(elements[0].(*Element)),
 	)
@@ -115,7 +115,7 @@ func (p *Pack) NewCard(elements ...any) {
 	p.parts = append(p.parts, Wrap(header, slide))
 }
 
-func (p *Pack) headings(e *Element) any {
+func (p *Deck) headings(e *Element) any {
 	switch e.Name {
 	case "h2":
 		p.lastH2 = e
@@ -131,7 +131,7 @@ func (p *Pack) headings(e *Element) any {
 	}
 }
 
-func (p *Pack) Document() *Page {
+func (p *Deck) Document() *Page {
 	body := Body()
 
 	// create cover page if not set

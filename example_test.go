@@ -5,8 +5,8 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func Example_pack() {
-	p := deck.NewPack()
+func Example_deck() {
+	p := deck.NewDeck()
 	p.Title = "My funny presentation"
 	p.Author = "Gregory Vinčić"
 	// dark mode
