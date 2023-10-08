@@ -3,6 +3,10 @@
 This project adheres to semantic versioning and all major changes will
 be noted in this file.
 
+## [0.2.0] 2023-10-08
+
+- Use class toc to override width
+
 ## [0.1.2] 2023-10-08
 
 - Publish package

@@ -3,6 +3,7 @@ package deck
 import (
 	_ "embed"
 	"fmt"
+	"sync"
 
 	. "github.com/gregoryv/web"
 )
@@ -14,7 +15,9 @@ type Deck struct {
 	cover *Element
 	toc   *Element
 	cards []*Element
-	user  *CSS
+
+	mkuser sync.Once
+	user   *CSS
 
 	lastH2 *Element
 }
@@ -81,6 +84,11 @@ func (p *Deck) CSS() *CSS {
 		"text-align: center",
 	)
 	// toc
+	css.Style(".toc",
+		"position: absolute",
+		"left: 20vw",
+		"width: "+vw(55),
+	)
 	css.Style(".toc a",
 		"text-decoration: none",
 	)
@@ -96,16 +104,24 @@ func (p *Deck) CSS() *CSS {
 }
 
 func (p *Deck) Style(x string, v ...string) {
+	p.mkuser.Do(func() {
+		p.user = NewCSS()
+	})
 	p.user.Style(x, v...)
 }
 
 func (p *Deck) NewCard(elements ...any) {
+	c := p.newCard(elements...)
+	p.cards = append(p.cards, c)
+}
+
+func (p *Deck) newCard(elements ...any) *Element {
 	header := Div(Class("header"),
 		p.headings(elements[0].(*Element)),
 	)
 	slide := Div(Class("slide"))
 	slide.With(elements[1:]...)
-	p.cards = append(p.cards, Wrap(header, slide))
+	return Wrap(header, slide)
 }
 
 func (p *Deck) headings(e *Element) any {
@@ -154,7 +170,6 @@ func (p *Deck) Document() *Page {
 	if toc == nil {
 		ul := Ul()
 		nav := Nav(
-			Class("toc"),
 			ul,
 		)
 		for i, root := range cards {
@@ -168,12 +183,9 @@ func (p *Deck) Document() *Page {
 			})
 		}
 
-		toc = Wrap(
-			Div(
-				Class("header"),
-				H2(p.Title),
-			),
-			Middle(30, nav),
+		toc = p.newCard(
+			H2(p.Title),
+			Div(Class("toc"), nav),
 		)
 	}
 

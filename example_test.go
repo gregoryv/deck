@@ -12,7 +12,7 @@ func Example_deck() {
 	}
 	// dark mode
 	//p.Style("html, body", "background-color: #2E2E34", "color: #f0f8ff")
-
+	p.Style(".toc", "margin-left: 10vw", "width: 20vw")
 	p.NewCard(
 		// each card must start with H2 or H3
 		H2("Animals"),
