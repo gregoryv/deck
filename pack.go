@@ -7,8 +7,9 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func NewPack(scale int) *Pack {
+func NewPack() *Pack {
 	// vh
+	var scale = 2
 	var footerHeight int = scale
 	var headerHeight int = scale * 4
 	var fontSize = scale
@@ -40,7 +41,7 @@ func NewPack(scale int) *Pack {
 		"height: "+vh(footerHeight),
 	)
 	css.Style(".page .view",
-		"font-size: "+vh(fontSize),
+		"font-size: "+vw(fontSize),
 		"margin: 0 0",
 		"padding: 0 0",
 	)
@@ -83,6 +84,10 @@ func NewPack(scale int) *Pack {
 
 func vh(i int) string {
 	return fmt.Sprintf("%vvh", i)
+}
+
+func vw(i int) string {
+	return fmt.Sprintf("%vvw", i)
 }
 
 type Pack struct {

@@ -6,7 +6,7 @@ import (
 )
 
 func Example_pack() {
-	p := deck.NewPack(3)
+	p := deck.NewPack()
 	p.Title = "My funny presentation"
 	p.Author = "Gregory Vinčić"
 	p.Style(".nowrap", "white-space: nowrap")
@@ -22,7 +22,7 @@ func Example_pack() {
 	)
 	p.NewSlide(
 		H3("Horses"),
-		deck.Middle(30,
+		deck.Middle(69,
 			ipsum().With(Class("nowrap")),
 		),
 	)

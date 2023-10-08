@@ -23,11 +23,14 @@ func Double(e1, e2 any) *Element {
 	return div
 }
 
-func Middle(leftVH int, element ...any) *Element {
+func Middle(width int, element ...any) *Element {
+	left := (100 - width) / 2
 	div := Div(
 		Attr(
 			"style",
-			fmt.Sprintf("padding-left: %vvh; width: %vvh", leftVH, 100-2*leftVH),
+			fmt.Sprintf(
+				"position: absolute; left: %s; width: %s", vw(left), vw(width),
+			),
 		),
 	)
 	div.With(element...)
@@ -42,6 +45,10 @@ func Center(element ...any) *Element {
 
 func layoutView() *CSS {
 	css := NewCSS()
+	css.Style(".outline",
+		"border: 1px solid black",
+	)
+
 	// center
 	css.Style(".center",
 		"text-align: center",
