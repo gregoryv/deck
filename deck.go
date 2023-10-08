@@ -13,7 +13,7 @@ type Deck struct {
 
 	cover *Element
 	toc   *Element
-	parts []*Element
+	cards []*Element
 	user  *CSS
 
 	lastH2 *Element
@@ -105,7 +105,7 @@ func (p *Deck) NewCard(elements ...any) {
 	)
 	slide := Div(Class("slide"))
 	slide.With(elements[1:]...)
-	p.parts = append(p.parts, Wrap(header, slide))
+	p.cards = append(p.cards, Wrap(header, slide))
 }
 
 func (p *Deck) headings(e *Element) any {
@@ -148,7 +148,7 @@ func (p *Deck) Document() *Page {
 		)
 	}
 
-	parts := p.parts
+	cards := p.cards
 	// table of deck
 	toc := p.toc
 	if toc == nil {
@@ -157,7 +157,7 @@ func (p *Deck) Document() *Page {
 			Class("toc"),
 			ul,
 		)
-		for i, root := range parts {
+		for i, root := range cards {
 			WalkElements(root, func(e *Element) {
 				if !(e.Name == "h2" || e.Name == "h3") {
 					return
@@ -177,8 +177,8 @@ func (p *Deck) Document() *Page {
 		)
 	}
 
-	parts = append([]*Element{cover, toc}, parts...)
-	for i, page := range parts {
+	cards = append([]*Element{cover, toc}, cards...)
+	for i, page := range cards {
 		pageIndex := i + 1
 		deck := Div(Class("view"))
 		deck.With(page.Children...)
@@ -186,7 +186,7 @@ func (p *Deck) Document() *Page {
 		body.With(
 			Div(Class("page"), Attr("id", pageIndex),
 				deck,
-				footer(pageIndex, parts),
+				footer(pageIndex, cards),
 			),
 		)
 	}
@@ -207,9 +207,9 @@ func (p *Deck) Document() *Page {
 	)
 }
 
-func footer(pageIndex int, parts []*Element) *Element {
+func footer(pageIndex int, cards []*Element) *Element {
 	return Div(Class("footer"),
-		pageIndex, "/", len(parts),
+		pageIndex, "/", len(cards),
 	)
 }
 
