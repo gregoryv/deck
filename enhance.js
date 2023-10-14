@@ -1,8 +1,8 @@
 let elements = document.querySelectorAll('.page');
-let last = elements.length;
-let pageIndex = getPos();
+const last = elements.length;
 
 function previousPage() {
+    let pageIndex = getPos()
     if (pageIndex > 1) {
 	pageIndex--
 	window.location.hash = pageIndex
@@ -10,6 +10,7 @@ function previousPage() {
 }
 
 function nextPage() {
+    let pageIndex = getPos()
     if (pageIndex < last) {
 	pageIndex++
 	window.location.hash = pageIndex

@@ -5,6 +5,7 @@ be noted in this file.
 
 ## [unreleased]
 
+- Fix key navigation if links are clicked in e.g. TOC
 - Add Deck.AutoCover and AutoTOC, false by default
 
 ## [0.2.0] 2023-10-08

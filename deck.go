@@ -179,7 +179,7 @@ func (p *Deck) Document() *Page {
 		nav := Nav(
 			ul,
 		)
-		for i, root := range cards {
+		for i, root := range p.cards {
 			WalkElements(root, func(e *Element) {
 				if !(e.Name == "h2" || e.Name == "h3") {
 					return
