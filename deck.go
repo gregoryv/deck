@@ -68,7 +68,6 @@ func (p *Deck) CSS() *CSS {
 		"text-align: center",
 		"height: "+vh(headerHeight),
 		"overflow: hidden",
-		//"border-bottom: 1px solid red",
 	)
 
 	css.Style(".header h1, .header h2, .header .group",
@@ -83,7 +82,7 @@ func (p *Deck) CSS() *CSS {
 	)
 	css.Style(".page .view .slide",
 		"margin: auto",
-		"padding: 1.6vw 1.6vw 1.6vw 1.6vw",
+		"padding: 0.8vw 1.6vw 0.8vw 1.6vw",
 		"height: "+vh(100-2*footerHeight-headerHeight-3),
 		"overflow: hidden",
 	)
