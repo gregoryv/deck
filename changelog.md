@@ -5,6 +5,7 @@ be noted in this file.
 
 ## [unreleased]
 
+- Links are colorless by default
 - Group title is the same as h2 to minimize flickering
 - Fix key navigation if links are clicked in e.g. TOC
 - Add Deck.AutoCover and AutoTOC, false by default

@@ -100,8 +100,12 @@ func (p *Deck) CSS() *CSS {
 		"left: 20vw",
 		"width: "+vw(55),
 	)
-	css.Style(".toc a",
+	css.Style("a",
 		"text-decoration: none",
+		"color: #000",
+	)
+	css.Style("a:hover",
+		"text-decoration: underline",
 	)
 	css.Style(".h3",
 		"margin-left: 5vw",
