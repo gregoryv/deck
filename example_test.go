@@ -14,7 +14,7 @@ func Example_deck() {
 	}
 	// dark mode
 	//p.Style("html, body, a", "background-color: #2E2E34", "color: #f0f8ff")
-	p.Style(".header", "background-color: #e2e2e2")
+	p.Style(".header", "background-color: #f6f5f4", "border-bottom: 1px inset #000")
 	// center toc if short titles
 	//p.Style(".toc", "margin-left: 10vw", "width: 20vw")
 
