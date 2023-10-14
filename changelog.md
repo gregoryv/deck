@@ -3,6 +3,10 @@
 This project adheres to semantic versioning and all major changes will
 be noted in this file.
 
+## [unreleased]
+
+- Add Deck.AutoCover and AutoTOC, false by default
+
 ## [0.2.0] 2023-10-08
 
 - Use class toc to override width

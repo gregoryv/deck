@@ -12,8 +12,12 @@ type Deck struct {
 	Title  string
 	Author string
 
-	cover *Element
-	toc   *Element
+	AutoCover bool
+	cover     *Element
+
+	AutoTOC bool
+	toc     *Element
+
 	cards []*Element
 
 	mkuser sync.Once
@@ -142,10 +146,11 @@ func (p *Deck) headings(e *Element) any {
 
 func (p *Deck) Document() *Page {
 	body := Body()
+	var cards []*Element
 
 	// create cover page if not set
 	cover := p.cover
-	if cover == nil {
+	if cover == nil && p.AutoCover {
 		cover = Wrap(
 			Div(Class("cover"),
 				Table(
@@ -163,11 +168,13 @@ func (p *Deck) Document() *Page {
 			),
 		)
 	}
+	if cover != nil {
+		cards = append(cards, cover)
+	}
 
-	cards := p.cards
 	// table of deck
 	toc := p.toc
-	if toc == nil {
+	if toc == nil && p.AutoTOC {
 		ul := Ul()
 		nav := Nav(
 			ul,
@@ -188,8 +195,11 @@ func (p *Deck) Document() *Page {
 			Div(Class("toc"), nav),
 		)
 	}
+	if toc != nil {
+		cards = append(cards, toc)
+	}
+	cards = append(cards, p.cards...)
 
-	cards = append([]*Element{cover, toc}, cards...)
 	for i, page := range cards {
 		pageIndex := i + 1
 		deck := Div(Class("view"))

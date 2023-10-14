@@ -7,8 +7,10 @@ import (
 
 func Example_deck() {
 	p := deck.Deck{
-		Title:  "My funny presentation",
-		Author: "Gregory Vinčić",
+		Title:     "My funny presentation",
+		Author:    "Gregory Vinčić",
+		AutoCover: true,
+		AutoTOC:   true,
 	}
 	// dark mode
 	//p.Style("html, body", "background-color: #2E2E34", "color: #f0f8ff")
