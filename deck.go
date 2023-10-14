@@ -111,6 +111,9 @@ func (p *Deck) CSS() *CSS {
 		"list-style-type: circle",
 	)
 	css = css.With(layoutView())
+
+	css = css.With(srcfile(fontSize))
+	css = css.With(highlightColors())
 	if p.user != nil {
 		css = css.With(p.user)
 	}

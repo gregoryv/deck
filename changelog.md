@@ -5,6 +5,7 @@ be noted in this file.
 
 ## [unreleased]
 
+- Add file loading funcs Load, LoadFunc and LoadLines
 - Less padding in slides
 - Links are colorless by default
 - Group title is the same as h2 to minimize flickering

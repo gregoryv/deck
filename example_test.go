@@ -34,6 +34,14 @@ func Example_deck() {
 		),
 	)
 	p.NewCard(
+		// H3 means sub card of last H"
+		H3("Code"),
+		deck.Middle(50,
+			P("Example showing how to load a func"),
+			deck.LoadFunc("layout.go", "Double"),
+		),
+	)
+	p.NewCard(
 		H3("Birds"),
 		H4("Wings"),
 		lorem,

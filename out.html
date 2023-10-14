@@ -95,6 +95,53 @@ position: absolute;
 left: 50vw;
 width: 40vw;
 }
+.srcfile {
+margin-top: 1.6em;
+margin-bottom: 1.6em;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAlCAMAAAB1cTk3AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAjVBMVEX9/fz4+Pb19fP8/Pz39/Xp6ejr6+rs7Ov29vTt7evo6Oj6+vr7+/vv7+/u7u3v7+37+/ru7uzw8PD////29vbx8fD6+vjq6unz8/L5+ff39/f9/f3y8vHo6Ofx8fHw8O/z8/P6+vn4+Pj09PL+/v729vXp6efy8vDv7+709PTz8/H7+/n8/Pv5+fju7u5JBELWAAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+cFHw8tIWAQRK8AAAC5SURBVCjPpZDbEoIgEIaXQLPUNNFOWJrRyQ7v/3gJAs2EFzTuBex+8+/uDwDIiglgGyItJJ4/9YM+DxSczcMowvFCFgmk4lpmVEZeiGolYbCmKjZiQgp4i5C305CVPezOPTVxMLD6wrorj79K0U6kpaQxM0/GPIm5gmdilKise9ZI4UW96HoLGcN3ybpF+hPaomxV+oCn/Ukv4DZMgdqQOkMMb0clG4L5uO3/wAGf3Ll9UJk5Lxpr/gOpxRF8cA+lxgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wNS0zMVQxMzo0NTozMyswMjowMJXHbJYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDUtMzFUMTM6NDU6MzMrMDI6MDDkmtQqAAAAAElFTkSuQmCC);
+background-repeat: repeat-y;
+padding-left: 36px;
+background-color: #fafafa;
+tab-size: 4;
+-moz-tab-size: 4;
+min-width: 35vw;
+font-size: 2vh;
+}
+.srcfile code {
+padding: .6em 0 2vh 0;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAlCAMAAAB1cTk3AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAjVBMVEX9/fz4+Pb19fP8/Pz39/Xp6ejr6+rs7Ov29vTt7evo6Oj6+vr7+/vv7+/u7u3v7+37+/ru7uzw8PD////29vbx8fD6+vjq6unz8/L5+ff39/f9/f3y8vHo6Ofx8fHw8O/z8/P6+vn4+Pj09PL+/v729vXp6efy8vDv7+709PTz8/H7+/n8/Pv5+fju7u5JBELWAAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+cFHw8tIWAQRK8AAAC5SURBVCjPpZDbEoIgEIaXQLPUNNFOWJrRyQ7v/3gJAs2EFzTuBex+8+/uDwDIiglgGyItJJ4/9YM+DxSczcMowvFCFgmk4lpmVEZeiGolYbCmKjZiQgp4i5C305CVPezOPTVxMLD6wrorj79K0U6kpaQxM0/GPIm5gmdilKise9ZI4UW96HoLGcN3ybpF+hPaomxV+oCn/Ukv4DZMgdqQOkMMb0clG4L5uO3/wAGf3Ll9UJk5Lxpr/gOpxRF8cA+lxgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wNS0zMVQxMzo0NTozMyswMjowMJXHbJYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDUtMzFUMTM6NDU6MzMrMDI6MDDkmtQqAAAAAElFTkSuQmCC);
+background-repeat: repeat-y;
+background-position: right top;
+display: block;
+text-align: left;
+font-family: Inconsolata, monospace;
+overflow: hidden;
+}
+.srcfile ol {
+margin-left: 1vw;
+}
+.srcfile ol li {
+white-space: pre;
+}
+.srcfile ol li::marker {
+color: RGB(0,0,0,0.2);
+}
+.srcfile ol li:hover {
+background-color: RGB(180,238,180,0.3);
+}
+.srcfile code i {
+font-style: normal;
+color: #a2a2a2;
+}
+.keyword {
+color: darkviolet;
+}
+.type {
+color: dodgerblue;
+}
+.comment, .comment>span {
+color: darkgreen;
+}
 .header {
 background-color: #f6f5f4;
 border-bottom: 1px inset #000;
@@ -109,22 +156,23 @@ border-bottom: 1px inset #000;
 </table>
 </div>
 </div>
-<div class="footer">1/7</div>
+<div class="footer">1/8</div>
 </div>
 <div class="page" id="2"><div class="view"><div class="header"><h2>My funny presentation</h2>
 </div>
 <div class="slide"><div class="toc"><nav><ul>
 <li class="h2"><a href="#3">Animals</a></li>
 <li class="h3"><a href="#4">Horses</a></li>
-<li class="h3"><a href="#5">Birds</a></li>
-<li class="h2"><a href="#6">Things</a></li>
-<li class="h3"><a href="#7">Cars</a></li>
+<li class="h3"><a href="#5">Code</a></li>
+<li class="h3"><a href="#6">Birds</a></li>
+<li class="h2"><a href="#7">Things</a></li>
+<li class="h3"><a href="#8">Cars</a></li>
 </ul>
 </nav>
 </div>
 </div>
 </div>
-<div class="footer">2/7</div>
+<div class="footer">2/8</div>
 </div>
 <div class="page" id="3"><div class="view"><div class="header"><h2>Animals</h2>
 </div>
@@ -150,7 +198,7 @@ culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 </div>
 </div>
-<div class="footer">3/7</div>
+<div class="footer">3/8</div>
 </div>
 <div class="page" id="4"><div class="view"><div class="header"><div class="group">Animals</div>
 <h3>Horses</h3>
@@ -168,9 +216,38 @@ culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 </div>
 </div>
-<div class="footer">4/7</div>
+<div class="footer">4/8</div>
 </div>
 <div class="page" id="5"><div class="view"><div class="header"><div class="group">Animals</div>
+<h3>Code</h3>
+</div>
+<div class="slide"><div style="position: absolute; left: 25vw; width: 50vw"><p>Example showing how to load a func</p>
+<ul class="srcfile">
+<code><ol>
+<li><span class="keyword">func</span> Double(e1, e2 any) *Element {</li>
+<li>    div := Div(Class("double"))</li>
+<li>    div.With(</li>
+<li>        Div(</li>
+<li>            Class("column left"),</li>
+<li>            e1,</li>
+<li>        ),</li>
+<li>    )</li>
+<li>    div.With(</li>
+<li>        Div(</li>
+<li>            Class("column right"),</li>
+<li>            e2,</li>
+<li>        ),</li>
+<li>    )</li>
+<li>    <span class="keyword">return</span> div</li>
+<li>}</li>
+</ol>
+</code></ul>
+</div>
+</div>
+</div>
+<div class="footer">5/8</div>
+</div>
+<div class="page" id="6"><div class="view"><div class="header"><div class="group">Animals</div>
 <h3>Birds</h3>
 </div>
 <div class="slide"><h4>Wings</h4>
@@ -183,9 +260,9 @@ pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 </div>
-<div class="footer">5/7</div>
+<div class="footer">6/8</div>
 </div>
-<div class="page" id="6"><div class="view"><div class="header"><h2>Things</h2>
+<div class="page" id="7"><div class="view"><div class="header"><h2>Things</h2>
 </div>
 <div class="slide"><p>Lorem ipsum dolor sit amet, consectetur adipiscing
 elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -196,9 +273,9 @@ pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 </div>
-<div class="footer">6/7</div>
+<div class="footer">7/8</div>
 </div>
-<div class="page" id="7"><div class="view"><div class="header"><div class="group">Things</div>
+<div class="page" id="8"><div class="view"><div class="header"><div class="group">Things</div>
 <h3>Cars</h3>
 </div>
 <div class="slide"><div class="center"><h4>title 4</h4>
@@ -212,7 +289,7 @@ culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 </div>
 </div>
-<div class="footer">7/7</div>
+<div class="footer">8/8</div>
 </div>
 </body>
 <script>let elements = document.querySelectorAll('.page');
