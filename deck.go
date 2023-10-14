@@ -30,7 +30,7 @@ func (p *Deck) CSS() *CSS {
 	// vh
 	var scale = 2
 	var footerHeight int = scale
-	var headerHeight int = scale * 4
+	var headerHeight int = scale * 7
 	var fontSize = scale
 
 	css := NewCSS()
@@ -67,12 +67,19 @@ func (p *Deck) CSS() *CSS {
 	css.Style(".page .view .header",
 		"text-align: center",
 		"height: "+vh(headerHeight),
+		"overflow: hidden",
+		//"border-bottom: 1px solid red",
 	)
-	css.Style(".header .group",
-		"font-size: 2vh",
+
+	css.Style(".header h1, .header h2, .header .group",
+		"font-weight: bold",
+		"margin-top: 3vh",
+		"font-size: 5vh",
+		"margin-bottom: 0vh",
 	)
 	css.Style(".header h3",
-		"margin-top: 1vh",
+		"margin-top: 0vh",
+		"font-size: 3vh",
 	)
 	css.Style(".page .view .slide",
 		"margin: auto",
@@ -136,7 +143,7 @@ func (p *Deck) headings(e *Element) any {
 
 	case "h3":
 		return Wrap(
-			Span(Class("group"), p.lastH2.Children[0]),
+			Div(Class("group"), p.lastH2.Children[0]),
 			e,
 		)
 	default:
