@@ -3,6 +3,10 @@
 This project adheres to semantic versioning and all major changes will
 be noted in this file.
 
+## [unreleased]
+
+- Add keyword 'default'
+
 ## [0.3.0] 2023-10-14
 
 - Add file loading funcs Load, LoadFunc and LoadLines
