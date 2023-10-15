@@ -5,7 +5,7 @@ be noted in this file.
 
 ## [unreleased]
 
-- Add keyword 'default'
+- Highlight keywords default and fallthrough
 
 ## [0.3.0] 2023-10-14
 
