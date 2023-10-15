@@ -5,7 +5,7 @@ be noted in this file.
 
 ## [unreleased]
 
-- Highlight keywords default and fallthrough
+- Highlight keywords default, else and fallthrough
 
 ## [0.3.0] 2023-10-14
 
