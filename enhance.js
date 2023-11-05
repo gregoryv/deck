@@ -1,22 +1,3 @@
-let elements = document.querySelectorAll('.page');
-const last = elements.length;
-
-function previousPage() {
-    let pageIndex = getPos()
-    if (pageIndex > 1) {
-	pageIndex--
-	window.location.hash = pageIndex
-    }
-}
-
-function nextPage() {
-    let pageIndex = getPos()
-    if (pageIndex < last) {
-	pageIndex++
-	window.location.hash = pageIndex
-    }
-}
-
 document.addEventListener('keydown', function(event) {
     if (previousPageKey(event)) {
 	event.preventDefault()		
@@ -48,16 +29,34 @@ document.addEventListener('keydown', function(event) {
 
 window.addEventListener('resize', handleResize);
 
+const last = document.querySelectorAll('.page').length;
+
+function previousPage() {
+    let pageIndex = getPos()
+    if (pageIndex > 1) {
+	pageIndex--
+	window.location.hash = pageIndex
+    }
+}
+
+function nextPage() {
+    let pageIndex = getPos()
+    if (pageIndex < last) {
+	pageIndex++
+	window.location.hash = pageIndex
+    }
+}
+
 function handleResize() {
     window.location.hash = getPos()
 }
-
 
 function previousPageKey(event) {
     return event.key === 'ArrowLeft' ||
 	    event.key === 'ArrowUp' ||
 	    event.key === 'PageUp'
 }
+
 function nextPageKey(event) {
     return event.key === 'ArrowRight' ||
 	    event.key === 'ArrowDown' ||
@@ -69,7 +68,6 @@ function getPos() {
     if (currentView === '') {
 	currentView = "#1"
     }
-    currentView =parseInt(currentView.split('#').join(''))
-    return currentView
+    return parseInt(currentView.split('#').join(''))
 }
 
