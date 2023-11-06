@@ -3,7 +3,7 @@
 This project adheres to semantic versioning and all major changes will
 be noted in this file.
 
-## [unreleased]
+## [0.4.0] 2024-03-05
 
 - Highlight keywords default, else and fallthrough
 

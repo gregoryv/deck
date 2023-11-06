@@ -321,7 +321,9 @@ culpa qui officia deserunt mollit anim id est laborum.</p>
     return
 })
 
-window.addEventListener('resize', handleResize);
+window.addEventListener('resize', function() {
+    window.location.hash = getPos()
+});
 
 const last = document.querySelectorAll('.page').length;
 
@@ -339,10 +341,6 @@ function nextPage() {
 	pageIndex++
 	window.location.hash = pageIndex
     }
-}
-
-function handleResize() {
-    window.location.hash = getPos()
 }
 
 function previousPageKey(event) {

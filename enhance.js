@@ -27,7 +27,9 @@ document.addEventListener('keydown', function(event) {
     return
 })
 
-window.addEventListener('resize', handleResize);
+window.addEventListener('resize', function() {
+    window.location.hash = getPos()
+});
 
 const last = document.querySelectorAll('.page').length;
 
@@ -45,10 +47,6 @@ function nextPage() {
 	pageIndex++
 	window.location.hash = pageIndex
     }
-}
-
-function handleResize() {
-    window.location.hash = getPos()
 }
 
 function previousPageKey(event) {
